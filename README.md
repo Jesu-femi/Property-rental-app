@@ -10,35 +10,35 @@ Welcome! This guide explains how our team will collaborate on the **Property Ren
 
 Build a responsive **Property Rental Platform** using React that demonstrates:
 
-* React Components
-* React Router
-* State Management
-* CRUD Operations
-* Form Validation
-* Search, Filter & Sort
-* Responsive Design
-* Clean Component Structure
+- React Components
+- React Router
+- State Management
+- CRUD Operations
+- Form Validation
+- Search, Filter & Sort
+- Responsive Design
+- Clean Component Structure
 
 ---
 
 ## Required Pages
 
-* Landing Page
-* Browse Properties
-* Property Details
-* Enquiry Form
+- Landing Page
+- Browse Properties
+- Property Details
+- Enquiry Form
 
 ---
 
 ## Core Features
 
-* Responsive UI
-* Search by Title/Location
-* Filter by Price/Property Type
-* Sort by Name/Price
-* CRUD Operations
-* Form Validation
-* Favourite Property (Optional)
+- Responsive UI
+- Search by Title/Location
+- Filter by Price/Property Type
+- Sort by Name/Price
+- CRUD Operations
+- Form Validation
+- Favourite Property (Optional)
 
 ---
 
@@ -114,32 +114,36 @@ npm install tailwindcss @tailwindcss/vite
 src
 │
 ├── assets
+│   ├── images
+│   └── icons
 │
 ├── components
+│   ├── common
 │   ├── layout
 │   ├── property
-│   ├── ui
-│   └── common
-│
-├── context
-│
-├── data
-│
-├── hooks
+│   └── ui
 │
 ├── pages
 │
 ├── routes
 │
+├── context
+│
+├── hooks
+│
 ├── services
 │
-├── styles
+├── data
 │
 ├── utils
 │
+├── styles
+│
+├── constants
+│
 ├── App.jsx
 │
-├── main.jsx
+├── master.jsx
 │
 └── index.css
 ```
@@ -154,15 +158,15 @@ Do **not** create unnecessary folders or files without discussing it with the te
 
 Responsible for:
 
-* Repository management
-* Project setup
-* Routing
-* Navbar
-* Footer
-* Landing Page
-* Responsive Layout
-* Pull Request reviews
-* Merging into `main`
+- Repository management
+- Project setup
+- Routing
+- Navbar
+- Footer
+- Landing Page
+- Responsive Layout
+- Pull Request reviews
+- Merging into `master`
 
 ---
 
@@ -170,11 +174,11 @@ Responsible for:
 
 Responsible for:
 
-* Property Cards
-* Browse Page
-* Search
-* Filter
-* Sort
+- Property Cards
+- Browse Page
+- Search
+- Filter
+- Sort
 
 ---
 
@@ -182,10 +186,10 @@ Responsible for:
 
 Responsible for:
 
-* Property Details Page
-* Enquiry Form
-* Form Validation
-* Success Modal
+- Property Details Page
+- Enquiry Form
+- Form Validation
+- Success Modal
 
 ---
 
@@ -193,44 +197,53 @@ Responsible for:
 
 Responsible for:
 
-* Property Data
-* Context API
-* Add Property
-* Edit Property
-* Delete Property
-* Global State
+- Property Data
+- Context API
+- Add Property
+- Edit Property
+- Delete Property
+- Global State
 
 ---
 
 # 6. Branch Naming Convention
 
-Always branch from the latest **main**.
+These are the branches that should be created
+
+master - This is the master branch PLS no one should merge directly into this branch and also this has been created alrready.
+
+ui-layout
+Bash
+
+# git checkout -b <yourname>-ui-layout
+
+browse-page
+
+# git checkout -b <yourname>-browse-properties
+
+property-details
+
+# git checkout -b <yourname>-property-details
+
+crud-feature
+
+# git checkout -b <yourname>-crud-feature
+
+FOR YOUR FIRST RIME PUSH USE THIS
+
+# git push -u origin <yourname>-<feature>
+
+Always branch from the latest MASTER.
+
+This is the process to do that
 
 ```bash
-git checkout main
-git pull origin main
+git checkout master
+git pull origin master
 git checkout -b <yourname>-<feature>
 ```
 
-Examples:
-
-```
-lash-homepage
-
-samuel-navbar
-
-john-property-list
-
-mary-property-details
-
-daniel-crud
-
-grace-search-filter
-
-victor-enquiry-form
-```
-
-Never commit directly to **main**.
+Never commit directly to MASTER.
 
 ---
 
@@ -239,29 +252,17 @@ Never commit directly to **main**.
 Before starting work each day:
 
 ```bash
-git checkout main
-git pull origin main
+git checkout master
+git pull origin master
 git checkout <your-branch>
-git merge main
+git push -u origin <your-branch>
 ```
 
 Only work on the files assigned to you.
 
 Avoid modifying another member's files unless the team has agreed.
 
-Keep your branch focused on **one feature**.
-
-Examples:
-
-✅ Search functionality
-
-✅ Property Details page
-
-✅ CRUD implementation
-
-❌ Search + Navbar + Footer + Routing in one branch
-
----
+## Keep your branch focused on **one feature**.
 
 # 8. File Ownership
 
@@ -272,7 +273,7 @@ Owns:
 ```
 App.jsx
 
-main.jsx
+master.jsx
 
 Navbar.jsx
 
@@ -335,13 +336,13 @@ If you need to edit someone else's file, notify them first.
 
 # 9. Coding Standards
 
-* Use meaningful variable names.
-* Create reusable components whenever possible.
-* Keep components small and focused.
-* Do not duplicate code.
-* Use consistent indentation and formatting.
-* Remove unused imports and variables before committing.
-* Test your feature before pushing.
+- Use meaningful variable names.
+- Create reusable components whenever possible.
+- Keep components small and focused.
+- Do not duplicate code.
+- Use consistent indentation and formatting.
+- Remove unused imports and variables before committing.
+- Test your feature before pushing.
 
 ---
 
@@ -391,20 +392,20 @@ Changes
 
 # 11. Before Opening a Pull Request
 
-Before creating a PR, make sure you:
+Before creating a Pull Request, make sure you:
 
-* Pull the latest `main`
-* Merge `main` into your branch
-* Resolve any conflicts
-* Test your feature locally
-* Ensure there are no console errors
-* Confirm the application still runs correctly
+- Pull the latest `master`
+- Merge `master` into your branch
+- Resolve any conflicts
+- Test your feature locally
+- Ensure there are no console errors
+- Confirm the application still runs correctly
 
 ```bash
-git checkout main
-git pull origin main
+git checkout master
+git add pull origin master
 git checkout <your-branch>
-git merge main
+git push -u origin <your-branch>
 ```
 
 ---
@@ -420,36 +421,36 @@ git push origin <your-branch>
 Open a Pull Request into:
 
 ```
-main
+master
 ```
 
-Fill in the PR template.
+Fill in the Pull Request template.
 
 Example:
 
 ## What changed
 
-* Added property search functionality
-* Added search input component
-* Connected search to property listing
+- Added property search functionality
+- Added search input component
+- Connected search to property listing
 
 ---
 
 ## How I tested it
 
-* Tested search by property title
-* Tested search by location
-* Verified empty search displays all properties
-* Checked responsive behavior
+- Tested search by property title
+- Tested search by location
+- Verified empty search displays all properties
+- Checked responsive behavior
 
 ---
 
 ## Checklist
 
-* [ ] Branch is up to date with main
-* [ ] No console errors
-* [ ] Responsive on mobile
-* [ ] Tested feature manually
+- [ ] Branch is up to date with master
+- [ ] No console errors
+- [ ] Responsive on mobile
+- [ ] Tested feature manually
 
 ---
 
@@ -461,16 +462,16 @@ Notify the team in your communication channel (WhatsApp, Slack, etc.) that your 
 
 # 13. Review & Merge Process
 
-* Only the **Team Lead** merges into `main`.
-* Every Pull Request must be reviewed before merging.
-* Use **Squash and Merge** to keep the Git history clean.
-* If your branch has merge conflicts:
-
-  1. Pull the latest `main`.
+- Only the **Team Lead** merges into `master`.
+- Every Pull Request must be reviewed before merging.
+- Use **Squash and Merge** to keep the Git history clean.
+- If your branch has merge conflicts:
+  1. Pull the latest `master`.
   2. Merge it into your branch.
   3. Resolve conflicts locally.
   4. Push the updated branch.
-* Ask for help only if you cannot resolve the conflict after attempting it.
+
+- Ask for help only if you cannot resolve the conflict after attempting it.
 
 ---
 
@@ -478,14 +479,14 @@ Notify the team in your communication channel (WhatsApp, Slack, etc.) that your 
 
 Before submitting your work, verify that:
 
-* The application starts without errors.
-* Your feature works as expected.
-* No existing features are broken.
-* The UI is responsive.
-* Navigation works correctly.
-* Forms validate input correctly.
-* Search, filter, and sort behave correctly (if applicable).
-* CRUD operations work as expected (if applicable).
+- The application starts without errors.
+- Your feature works as expected.
+- No existing features are broken.
+- The UI is responsive.
+- Navigation works correctly.
+- Forms validate input correctly.
+- Search, filter, and sort behave correctly (if applicable).
+- CRUD operations work as expected (if applicable).
 
 ---
 
@@ -493,10 +494,10 @@ Before submitting your work, verify that:
 
 At the end of each work session, share a quick update with the team:
 
-* **Completed:** What did you finish today?
-* **Working on:** What will you do next?
-* **Blocked:** Are you facing any issues?
-* **Files Changed:** Which files did you modify?
+- **Completed:** What did you finish today?
+- **Working on:** What will you do next?
+- **Blocked:** Are you facing any issues?
+- **Files Changed:** Which files did you modify?
 
 This helps everyone stay informed and reduces the chances of duplicate work.
 
@@ -506,13 +507,32 @@ This helps everyone stay informed and reduces the chances of duplicate work.
 
 Before the project is submitted, ensure the repository contains:
 
-* ✅ Responsive React application
-* ✅ GitHub repository with clean commit history
-* ✅ Fully working CRUD functionality
-* ✅ Search, filter, and sort features
-* ✅ Form validation
-* ✅ Clean component structure
-* ✅ Well-written `README.md`
-* ✅ Ready-to-present 
+- ✅ Responsive React application
+- ✅ GitHub repository with clean commit history
+- ✅ Fully working CRUD functionality
+- ✅ Search, filter, and sort features
+- ✅ Form validation
+- ✅ Clean component structure
+- ✅ Well-written `README.md`
+- ✅ Ready-to-present
 
-hey
+Integration Responsibilities
+
+| Feature            | Owner                         | Reviewer |
+| ------------------ | ----------------------------- | -------- |
+| Project Setup      | Member 1                      | Member 4 |
+| Landing Page       | Member 1                      | Member 2 |
+| Routing            | Member 1                      | Member 3 |
+| Browse Page        | Member 2                      | Member1  |
+| Search             | Member 2                      | Member 4 |
+| Filter             | Member 2                      | Member 3 |
+| Sort               | Member 2                      | Member1  |
+| Property Details   | Member 3                      | Member 2 |
+| Enquiry Form       | Member 3                      | Member 4 |
+| Form Validation    | Member 3                      | Member1  |
+| Data Structure     | Member 4                      | Member 2 |
+| Context API        | Member 4                      | Member1  |
+| CRUD Operations    | Member 4                      | Member 3 |
+| Responsive Testing | Everyone                      | Everyone |
+| README             | Member1 (with input from all) | Everyone |
+| Final Demo         | Everyone                      | Everyone |

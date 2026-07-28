@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+
+# An .env file should be here but i have to install it first
+# how do i create the pr template
