@@ -44,13 +44,16 @@ Build a responsive **Property Rental Platform** using React that demonstrates:
 
 # 2. Getting Set Up
 
-## Step 1: Get Repository Access
+## Step 1: The link to figma
 
-Ask the **Team Lead** to add you as a collaborator on GitHub.
+
+## Step 2: Get Repository Access
+
+https://github.com/Jesu-femi/Property-rental-app.git
 
 ---
 
-## Step 2: Clone the Repository
+## Step 3: Clone the Repository
 
 ```bash
 git clone <repository-url>
@@ -111,41 +114,49 @@ npm install tailwindcss @tailwindcss/vite
 # 4. Project Folder Structure
 
 ```
-src
-│
-├── assets
-│   ├── images
-│   └── icons
-│
-├── components
-│   ├── common
-│   ├── layout
-│   ├── property
-│   └── ui
-│
-├── pages
-│
-├── routes
-│
-├── context
-│
-├── hooks
-│
-├── services
-│
-├── data
-│
-├── utils
-│
-├── styles
-│
-├── constants
-│
-├── App.jsx
-│
-├── master.jsx
-│
-└── index.css
+property-rental-platform/
+├── public/
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── icons/
+│   ├── components/
+│   │   ├── common/
+│   │   ├── layout/
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Footer.jsx
+│   │   ├── property/
+│   │   │   ├── PropertyCard.jsx
+│   │   │   ├── SearchBar.jsx
+│   │   │   ├── FilterPanel.jsx
+│   │   │   └── SortDropdown.jsx
+│   │   └── ui/
+│   │       ├── Button.jsx
+│   │       ├── Loader.jsx
+│   │       └── Modal.jsx
+│   ├── constants/
+│   ├── context/
+│   │   └── PropertyContext.jsx
+│   ├── data/
+│   │   └── properties.js
+│   ├── hooks/
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── BrowseProperties.jsx
+│   │   ├── PropertyDetails.jsx
+│   │   ├── Enquiry.jsx
+│   │   └── NotFound.jsx
+│   ├── routes/
+│   ├── services/
+│   ├── styles/
+│   ├── utils/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── package.json
+├── vite.config.js
+└── README.md
 ```
 
 Do **not** create unnecessary folders or files without discussing it with the team.
@@ -156,55 +167,295 @@ Do **not** create unnecessary folders or files without discussing it with the te
 
 ## Team Lead – UI & Project Management
 
-Responsible for:
+Responsibilities
+Project Setup
+Create GitHub repository
+Invite collaborators
+Install React
+Install Tailwind CSS
+Install React Router
+Create folder structure
+Configure routing
+Layout
 
-- Repository management
-- Project setup
-- Routing
-- Navbar
-- Footer
-- Landing Page
-- Responsive Layout
-- Pull Request reviews
-- Merging into `master`
+Build:
 
----
+Navbar
+Footer
+Button
+Loader
+Landing Page
 
-## Member 2 – Property Listing
+Build:
 
-Responsible for:
+Home.jsx
 
-- Property Cards
-- Browse Page
-- Search
-- Filter
-- Sort
+Include:
 
----
+Hero section
+Featured properties
+About section
+Call-to-action
+Footer
 
-## Member 3 – Property Details & Forms
+Responsive Design
 
-Responsible for:
+Ensure:
 
-- Property Details Page
-- Enquiry Form
-- Form Validation
-- Success Modal
+Desktop
+Tablet
+Mobile
+Files Owned
+App.jsx
 
----
+main.jsx
 
-## Member 4 – State Management & CRUD
+components/layout/
 
-Responsible for:
+components/ui/Button.jsx
 
-- Property Data
-- Context API
-- Add Property
-- Edit Property
-- Delete Property
-- Global State
+components/ui/Loader.jsx
 
----
+pages/Home.jsx
+Deliverables
+Project setup
+Routing
+Home page
+Navbar
+Footer
+Responsive layout
+
+## Member 2 – Property Listing Developer
+
+Responsible to
+
+Build
+BrowseProperties.jsx
+
+PropertyCard.jsx
+
+SearchBar.jsx
+
+FilterPanel.jsx
+
+SortDropdown.jsx
+Implement
+Display Properties
+
+Use:
+
+map()
+Search
+
+Search by:
+
+Property title
+Location
+Filter
+
+Filter by:
+
+Property type
+Price range
+Sort
+
+Sort by:
+
+Name A-Z
+Name Z-A
+Price Low-High
+Price High-Low
+Empty State
+No properties found.
+Files Owned
+pages/BrowseProperties.jsx
+
+components/property/
+Deliverables
+Browse page
+Search
+Filter
+Sort
+Property cards
+
+## Member 3 – Property Details & Forms Developer
+
+Responsible for everything after clicking a property.
+
+Build
+PropertyDetails.jsx
+
+Enquiry.jsx
+
+Modal.jsx
+Property Details
+
+Display:
+
+Images
+Title
+Description
+Price
+Bedrooms
+Bathrooms
+Property Type
+Location
+
+Use:
+
+useParams()
+Enquiry Form
+
+Fields:
+
+Name
+
+Email
+
+Phone
+
+Message
+Validation
+
+Validate:
+
+Empty fields
+Email format
+Phone number
+Required message
+Success Message
+Enquiry submitted successfully.
+Files Owned
+pages/PropertyDetails.jsx
+
+pages/Enquiry.jsx
+
+components/ui/Modal.jsx
+Deliverables
+Property details page
+Enquiry form
+Validation
+Success modal
+
+## Member 4 – State Management Developer
+
+Responsible for managing all shared application data.
+
+Create
+PropertyContext.jsx
+Create Data
+properties.js
+
+Populate with:
+
+10–20 properties
+
+Example:
+
+id
+title
+price
+location
+type
+description
+bedrooms
+bathrooms
+image
+Context API
+
+Store:
+
+Properties
+Selected property
+Search state (if the team agrees)
+Filter state (optional)
+
+Provide:
+
+<PropertyContext.Provider>
+
+Wrap the application.
+
+Files Owned
+context/
+
+data/
+
+constants/
+Deliverables
+Context API
+Sample property data
+Global state
+
+## Member 5 – CRUD & Quality Assurance Developer
+
+This member focuses on property management and ensuring the application is stable.
+
+CRUD
+
+Implement:
+
+Create
+Add Property
+Update
+Edit Property
+Delete
+Delete Property
+Optional
+
+Favourite Property
+
+Add to Favourites
+Testing
+
+Test:
+
+CRUD
+Search
+Filter
+Sort
+Routing
+Form validation
+
+Fix bugs discovered during testing.
+
+Documentation
+
+Write:
+
+README.md
+
+Include:
+
+Project description
+Installation
+Features
+Folder structure
+Team members
+Technologies used
+How to run the project
+Presentation
+
+Prepare:
+
+Demo flow
+Screenshots (if required)
+Feature explanation
+Files Owned
+README.md
+
+CRUD-related files
+
+Testing updates
+
+Documentation
+Deliverables
+CRUD functionality
+README
+Final testing
+Bug fixes
+Presentation support
+
 
 # 6. Branch Naming Convention
 
@@ -263,76 +514,6 @@ Only work on the files assigned to you.
 Avoid modifying another member's files unless the team has agreed.
 
 ## Keep your branch focused on **one feature**.
-
-# 8. File Ownership
-
-## Team Lead
-
-Owns:
-
-```
-App.jsx
-
-master.jsx
-
-Navbar.jsx
-
-Footer.jsx
-
-Home.jsx
-
-routes/
-```
-
----
-
-## Member 2
-
-Owns:
-
-```
-BrowseProperties.jsx
-
-PropertyCard.jsx
-
-SearchBar.jsx
-
-FilterPanel.jsx
-
-SortDropdown.jsx
-```
-
----
-
-## Member 3
-
-Owns:
-
-```
-PropertyDetails.jsx
-
-Enquiry.jsx
-
-Modal.jsx
-```
-
----
-
-## Member 4
-
-Owns:
-
-```
-PropertyContext.jsx
-
-properties.js
-
-utils/
-```
-
-If you need to edit someone else's file, notify them first.
-
----
 
 # 9. Coding Standards
 
