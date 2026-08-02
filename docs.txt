@@ -123,6 +123,8 @@ property-rental-platform/
 │   ├── components/
 │   │   ├── common/
 │   │   ├── layout/
+│   │   │   ├── button.jsx
+│   │   │   ├── Loader.jsx
 │   │   │   ├── Navbar.jsx
 │   │   │   └── Footer.jsx
 │   │   ├── property/
@@ -165,7 +167,7 @@ Do **not** create unnecessary folders or files without discussing it with the te
 
 # 5. Team Responsibilities
 
-## Team Lead – UI & Project Management
+## femi – UI & Project Management
 
 Responsibilities
 Project Setup
@@ -209,15 +211,13 @@ Files Owned
 App.jsx
 
 main.jsx
-
 components/layout/
-
 components/ui/Button.jsx
-
 components/ui/Loader.jsx
-
 pages/Home.jsx
+
 Deliverables
+
 Project setup
 Routing
 Home page
@@ -225,30 +225,29 @@ Navbar
 Footer
 Responsive layout
 
-## Member 2 – Property Listing Developer
+## Samson – Property Listing Developer
 
 Responsible to
 
 Build
+
 BrowseProperties.jsx
-
 PropertyCard.jsx
-
 SearchBar.jsx
-
 FilterPanel.jsx
-
 SortDropdown.jsx
+
 Implement
+
 Display Properties
 
 Use:
 
 map()
+
 Search
 
 Search by:
-
 Property title
 Location
 Filter
@@ -267,26 +266,28 @@ Price Low-High
 Price High-Low
 Empty State
 No properties found.
-Files Owned
-pages/BrowseProperties.jsx
 
+Files Owned
+
+pages/BrowseProperties.jsx
 components/property/
+
 Deliverables
+
 Browse page
 Search
 Filter
 Sort
 Property cards
 
-## Member 3 – Property Details & Forms Developer
+## David – Property Details & Forms Developer
 
 Responsible for everything after clicking a property.
 
 Build
+
 PropertyDetails.jsx
-
 Enquiry.jsx
-
 Modal.jsx
 Property Details
 
@@ -309,13 +310,11 @@ Enquiry Form
 Fields:
 
 Name
-
 Email
-
 Phone
-
 Message
-Validation
+
+VALIDATION
 
 Validate:
 
@@ -325,19 +324,21 @@ Phone number
 Required message
 Success Message
 Enquiry submitted successfully.
+
 Files Owned
+
 pages/PropertyDetails.jsx
-
 pages/Enquiry.jsx
-
 components/ui/Modal.jsx
+
 Deliverables
+
 Property details page
 Enquiry form
 Validation
 Success modal
 
-## Member 4 – State Management Developer
+## Mukhtar – State Management Developer
 
 Responsible for managing all shared application data.
 
@@ -377,17 +378,18 @@ Provide:
 Wrap the application.
 
 Files Owned
+
 context/
-
 data/
-
 constants/
+
 Deliverables
+
 Context API
 Sample property data
 Global state
 
-## Member 5 – CRUD & Quality Assurance Developer
+## Innocent – CRUD & Quality Assurance Developer
 
 This member focuses on property management and ensuring the application is stable.
 
@@ -441,15 +443,16 @@ Prepare:
 Demo flow
 Screenshots (if required)
 Feature explanation
+
 Files Owned
+
 README.md
-
 CRUD-related files
-
 Testing updates
-
 Documentation
+
 Deliverables
+
 CRUD functionality
 README
 Final testing
@@ -701,19 +704,19 @@ Integration Responsibilities
 
 | Feature            | Owner                         | Reviewer |
 | ------------------ | ----------------------------- | -------- |
-| Project Setup      | Member 1                      | Member 4 |
-| Landing Page       | Member 1                      | Member 2 |
-| Routing            | Member 1                      | Member 3 |
-| Browse Page        | Member 2                      | Member1  |
-| Search             | Member 2                      | Member 4 |
-| Filter             | Member 2                      | Member 3 |
-| Sort               | Member 2                      | Member1  |
-| Property Details   | Member 3                      | Member 2 |
-| Enquiry Form       | Member 3                      | Member 4 |
-| Form Validation    | Member 3                      | Member1  |
-| Data Structure     | Member 4                      | Member 2 |
-| Context API        | Member 4                      | Member1  |
-| CRUD Operations    | Member 4                      | Member 3 |
+| Project Setup      | Femi                      | Mukhtar |
+| Landing Page       | Femi                      | Samson |
+| Routing            | Femi                      | David |
+| Browse Page        | Samson                      | Member1  |
+| Search             | Samson                      | Mukhtar |
+| Filter             | Samson                      | David |
+| Sort               | Samson                      | Member1  |
+| Property Details   | David                      | Samson |
+| Enquiry Form       | David                      | Mukhtar |
+| Form Validation    | David                      | Member1  |
+| Data Structure     | Mukhtar                      | Samson |
+| Context API        | Mukhtar                      | Member1  |
+| CRUD Operations    | Mukhtar                      | David |
 | Responsive Testing | Everyone                      | Everyone |
 | README             | Member1 (with input from all) | Everyone |
 | Final Demo         | Everyone                      | Everyone |
