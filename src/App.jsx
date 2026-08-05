@@ -8,20 +8,20 @@ import Enquiry from "./pages/Enquiry";
 import NotFound from "./pages/NotFound";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/browse" element={<BrowseProperties />} />
-          <Route path="/property/:id" element={<PropertyDetails />} />
-          <Route path="/enquiry" element={<Enquiry />} />
-        </Route>
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route element={<Layout />}>
+					<Route path="/" element={<Home />} />
+					<Route path="/browse" element={<BrowseProperties />} />
+					<Route path="/property/:id" element={<PropertyDetails />} />
+					<Route path="/enquiry" element={<Enquiry />} />
+				</Route>
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-  );
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;

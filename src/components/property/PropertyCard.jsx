@@ -1,0 +1,1 @@
+<PropertyCard property={property} />;
