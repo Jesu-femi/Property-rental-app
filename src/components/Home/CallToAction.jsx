@@ -2,7 +2,7 @@ import React from 'react'
 
 const CallToAction = () => {
   return (
-    <div>CallToAction</div>
+    <div className='text-black text-2xl'>Call To Action</div>
   )
 }
 

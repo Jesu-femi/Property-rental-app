@@ -21,7 +21,6 @@ function App() {
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>
-		// <div className="text-black">Hellowoooo</div>
 	);
 }
 

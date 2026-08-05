@@ -38,13 +38,14 @@ Build a responsive **Property Rental Platform** using React that demonstrates:
 - Sort by Name/Price
 - CRUD Operations
 - Form Validation
-- Favourite Property (Optional)
+- favorite Property (Optional)
 
 ---
 
 # 2. Getting Set Up
 
 ## Step 1: The link to figma
+https://www.figma.com/design/qYH5WEmNJuVIrcyjqSbScn/Luxury-Real-Estate-Rental-Website--Community-?node-id=70-2846&p=f&t=dCOtL3NNc6laPlkx-0
 
 
 ## Step 2: Get Repository Access

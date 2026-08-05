@@ -3,16 +3,17 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
 	const navLinks = [
 		{ name: "Home", path: "/" },
+		{ name: "About Us", path: "/about" },
 		{ name: "Browse Properties", path: "/browse" },
 		{ name: "Enquiry", path: "/enquiry" },
 	];
 
 	return (
-		<header className="sticky top-0 z-50 bg-white shadow-md">
+		<header className="sticky top-0 z-50 bg-black/60 shadow-md">
 			<nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 				{/* Logo */}
 				<div>
-					<h1 className="text-2xl font-bold text-blue-600">Property Rental</h1>
+					<h1 className="text-2xl font-bold text-white-600">LUXURY Rental</h1>
 				</div>
 
 				{/* Navigation Links */}
