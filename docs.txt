@@ -23,7 +23,7 @@ Build a responsive **Property Rental Platform** using React that demonstrates:
 
 ## Required Pages
 
-- Landing Page
+- Landing Page (HOME)
 - Browse Properties
 - Property Details
 - Enquiry Form

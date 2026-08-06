@@ -8,7 +8,7 @@ function FeaturedProperties() {
 
 			<p>Curabitur efficitur...</p>
 
-			<div>
+			<div className="">
 				{properties.map((property) => (
 					<PropertyCard key={property.id} property={property} />
 				))}

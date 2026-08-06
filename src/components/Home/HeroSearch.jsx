@@ -1,5 +1,3 @@
-// src/components/home/HeroSearch.jsx
-
 function HeroSearch() {
 	return (
 		<div
@@ -43,6 +41,7 @@ function HeroSearch() {
 				<option>Price</option>
 				<option>$100 - $300</option>
 				<option>$300 - $600</option>
+				<option>$700 - $1000</option>
 			</select>
 
 			{/* Button */}

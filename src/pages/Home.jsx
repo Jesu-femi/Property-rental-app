@@ -1,18 +1,16 @@
 import Hero from "../components/home/Hero";
-import SearchSection from "../components/home/SearchSection";
 import FeaturedProperties from "../components/home/FeaturedProperties";
 import WhyChooseUs from "../components/home/WhyChooseUs";
 import CallToAction from "../components/home/CallToAction";
 
 function Home() {
   return (
-    <>
+    <main className="relative">
       <Hero />
-      <SearchSection />
       <FeaturedProperties />
       <WhyChooseUs />
       <CallToAction />
-    </>
+    </main>
   );
 }
 
