@@ -195,6 +195,7 @@ Home.jsx
 
 Include:
 
+Navbar
 Hero section
 Featured properties
 About section
@@ -208,6 +209,7 @@ Ensure:
 Desktop
 Tablet
 Mobile
+
 Files Owned
 App.jsx
 
@@ -406,9 +408,9 @@ Delete
 Delete Property
 Optional
 
-Favourite Property
+favorite Property
 
-Add to Favourites
+Add to favorites
 Testing
 
 Test:
@@ -465,7 +467,7 @@ Presentation support
 
 These are the branches that should be created
 
-master - This is the master branch PLS no one should merge directly into this branch and also this has been created alrready.
+master - This is the master branch PLS no one should merge directly into this branch and also this has been created already.
 
 ui-layout
 Bash

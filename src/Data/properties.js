@@ -9,7 +9,7 @@ const properties = [
 		bedrooms: 8,
 		bathrooms: 4,
 		size: 460,
-		image: "...",
+		image:"",
 	},
 
 	{

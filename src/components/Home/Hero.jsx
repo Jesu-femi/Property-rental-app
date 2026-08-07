@@ -6,7 +6,7 @@ import heroImage from "../../assets/images/hero.jpg";
 function Hero() {
 	return (
 		<section
-			className="relative flex min-h-screen items-center justify-center bg-cover bg-center"
+			className="relative flex min-h-screen items-center justify-center bg-cover bg-center mt-0"
 			style={{ backgroundImage: `url(${heroImage})` }}>
 			{/* Dark overlay */}
 
