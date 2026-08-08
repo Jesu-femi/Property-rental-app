@@ -1,34 +1,15 @@
-// src/components/home/HeroContent.jsx
-
 function HeroContent() {
 	return (
-		<div className="mb-14 text-center">
+		<div className=" mt-32 flex flex-col items-center text-center md:mt-20">
 			{/* Main Heading */}
 
-			<h1
-				className="
-          text-5xl
-          font-bold
-          uppercase
-          tracking-wide
-          text-white
-          md:text-7xl
-        ">
+			<h1 className=" font-serif text-5xl uppercase leading-none text-white md:text-7xl lg:text-8xl">
 				Be Our Guest
 			</h1>
 
 			{/* Subtitle */}
 
-			<p
-				className="
-          mx-auto
-          mt-6
-          max-w-xl
-          text-lg
-          uppercase
-          tracking-[0.25em]
-          text-white/90
-        ">
+			<p className=" mt-5 bg-white/90 px-4 py-2 text-xs uppercase tracking-[0.2em] text-gray-600 sm:text-sm md:px-6 md:text-base">
 				Live Like A King In Our Best Houses
 			</p>
 		</div>
