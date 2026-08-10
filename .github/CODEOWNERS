@@ -1,0 +1,24 @@
+## Feature
+
+- [ ] Navbar
+- [ ] Hero Section
+- [ ] Featured Properties
+- [ ] Search
+- [ ] Filter
+- [ ] Property Card
+- [ ] Footer
+- [ ] Responsiveness
+- [ ] Bug Fix
+- [ ] Other
+
+## Branch Name
+
+Example:
+
+feature/navbar
+
+feature/hero-section
+
+feature/property-card
+
+feature/footer
