@@ -12,7 +12,7 @@ function Navbar() {
 	];
 
 	return (
-		<nav className="absolute top-0 left-0 z-50 w-full">
+		<nav className=" absolute top-0 left-0 z-50 w-full">
 			{/* 
 		This container controls the spacing inside
 		the navbar.
