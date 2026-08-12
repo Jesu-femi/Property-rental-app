@@ -1,5 +1,4 @@
 // src/components/property/PropertyCard.jsx
-
 function PropertyCard({ property }) {
 	return (
 		<article className="overflow-hidden rounded-2xl bg-white shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">

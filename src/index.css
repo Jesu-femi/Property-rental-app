@@ -1,1 +1,60 @@
 @import "tailwindcss";
+
+/* Hide horizontal scrollbar for mobile carousels */
+.scrollbar-hide {
+	scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+
+/* Mobile carousel */
+.mobile-property-carousel {
+	display: flex;
+	overflow-x: auto;
+	gap: 16px;
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Each mobile card */
+.mobile-property-card {
+	flex: 0 0 88%;
+	scroll-snap-align: center;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+	.mobile-property-carousel {
+		display: none;
+	}
+}
+
+/* Desktop/tablet grid */
+.property-grid {
+	display: none;
+}
+
+@media (min-width: 640px) {
+	.property-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1024px) {
+	.property-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+/* === HIDE MOBILE CAROUSEL SCROLLBAR === */
+
+.scrollbar-hide {
+	scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
