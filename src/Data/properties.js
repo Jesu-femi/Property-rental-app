@@ -1,3 +1,5 @@
+import VillaMakarska from "../../assets/images/villa-makarska.jpg";
+
 const properties = [
 	{
 		id: 1,
