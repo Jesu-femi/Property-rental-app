@@ -1,4 +1,4 @@
-import VillaMakarska from "../../assets/images/villa-makarska.jpg";
+// import VillaMakarska from "../../assets/images/villa-makarska.jpg";
 
 const properties = [
 	{
@@ -27,8 +27,6 @@ const properties = [
 		image: "images/Villa Mexico.png",
 	},
     
-];
-const properties = [
   {
     id: 1,
     title: "Villa Luna",
