@@ -27,8 +27,6 @@ const properties = [
 		image: "images/Villa Mexico.png",
 	},
     
-];
-const properties = [
   {
     id: 1,
     title: "Villa Luna",
