@@ -24,10 +24,10 @@ function ContactSection() {
             They sit near the bottom of the image and overlap
             the transition into the section underneath. */}
 
-				<div className=" absolute bottom-0 translate-y-1/2 left-1/2 z-10 flex w-[calc(100%-40px)] max-w-183.75 -translate-x-1/2 flex-col gap-0 lg:flex-row">
+				<div className=" absolute bottom-0 left-1/2 z-10 flex w-[calc(100%-40px)] max-w-183.75 -translate-x-1/2 translate-y-1/2 flex-col md:flex-row">
 					{/* === LET'S CONNECT CARD === */}
 
-					<div className=" w-full rounded-t-[35px] bg-[#171d24] px-7 py-8 text-white sm:px-9 sm:py-9 lg:h-68.75 lg:w-67.5 lg:rounded-t-[35px] lg:rounded-br-sm lg:px-11 lg:py-10">
+					<div className=" w-full min-h-68.75 rounded-t-[35px] bg-[#171d24] px-7 py-8 text-white sm:px-9 sm:py-9 md:h-68.75 md:min-h-0 md:w-[38%] md:rounded-br-sm md:px-8 lg:w-67.5 lg:px-11">
 						<h2 className=" font-serif text-3xl text-[#f3eadf]">
 							Let’s connect
 						</h2>
@@ -71,7 +71,7 @@ function ContactSection() {
 
 					{/* === CONTACT FORM CARD === */}
 
-					<div className=" w-full rounded-br-[40px] bg-white px-7 py-8 sm:px-10 sm:py-9 lg:h-68. 75 lg:w-116.25 lg:rounded-br-[60px] lg:px-11 lg:py-10">
+					<div className=" w-full min-h-68.75 rounded-br-[40px] bg-white px-7 py-8 sm:px-10 sm:py-9 md:h-68.75 md:min-h-0 md:w-[62%] md:rounded-br-[60px] md:px-8 lg:w-116.25 lg:px-11">
 						<h2 className=" font-serif text-3xl leading-tight text-gray-900">
 							We’d love to hear from you
 						</h2>
@@ -126,7 +126,7 @@ function ContactSection() {
           Because the cards extend below the image, we need
           to reserve that space before the footer begins. */}
 
-			<div className="h-45 sm:h-47.5 lg:h-40" />
+			<div className=" h-80 sm:h-82.5 lg:h-47.5" />
 		</section>
 	);
 }

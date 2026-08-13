@@ -7,7 +7,7 @@ function PropertyCard({ property }) {
 
 			<div className="relative h-64 w-full overflow-hidden">
 				<img
-					src={`/images/${property.image}`}
+					src={`../../assets/${property.image}`}
 					alt={property.title}
 					className="h-full w-full object-cover"
 				/>
@@ -16,7 +16,7 @@ function PropertyCard({ property }) {
 
 				<div className="absolute bottom-4 left-4 rounded-lg bg-white px-4 py-2 shadow-md">
 					<p className="text-sm font-semibold text-gray-800">
-						€{property.price}
+						{property.price}
 						<span className="ml-1 text-xs font-normal text-gray-500">
 							/night
 						</span>
