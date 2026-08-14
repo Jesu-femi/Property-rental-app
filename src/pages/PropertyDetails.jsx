@@ -1,9 +1,9 @@
-import React from 'react'
-
-const PropertyDetails = () => {
-  return (
-    <div>PropertyDetails</div>
-  )
+function PropertyDetails() {
+	return (
+		<main className="bg-white">
+			{/* Property Details content will go here */}
+		</main>
+	);
 }
 
-export default PropertyDetails
+export default PropertyDetails;
