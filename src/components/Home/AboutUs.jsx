@@ -1,4 +1,4 @@
-// src/components/home/AboutUs.jsx
+branch // src/components/home/AboutUs.jsx
 
 import aboutImage from "../../assets/images/about-us-1.jpg";
 import poolImage from "../../assets/images/about-us-2.jpg";
