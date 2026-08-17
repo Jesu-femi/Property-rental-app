@@ -8,6 +8,10 @@ function FeaturedProperties() {
 
 	const [currentIndex, setCurrentIndex] = useState(0);
 
+	// Number of cards displayed at each breakpoint
+	const DESKTOP_CARDS = 3;
+	const TABLET_CARDS = 2;
+
 	// Reference to the mobile carousel
 	const mobileCarouselRef = useRef(null);
 
@@ -15,21 +19,27 @@ function FeaturedProperties() {
 	const [mobileIndex, setMobileIndex] = useState(0);
 
 	// Desktop shows 3 cards
-	const desktopProperties = properties.slice(currentIndex, currentIndex + 3);
+	const desktopProperties = properties.slice(
+		currentIndex,
+		currentIndex + DESKTOP_CARDS,
+	);
 
 	// Tablet shows 2 cards
-	const tabletProperties = properties.slice(currentIndex, currentIndex + 2);
+	const tabletProperties = properties.slice(
+		currentIndex,
+		currentIndex + TABLET_CARDS,
+	);
 
 	// NEXT BUTTON
 	const handleNext = () => {
 		/*
 		  We don't want the carousel to go beyond the
 		  available properties.
-	
 		*/
-
 		setCurrentIndex((previousIndex) => {
-			if (previousIndex >= properties.length - 3) {
+			// Stop when the desktop carousel reaches
+			// the final group of 3 properties.
+			if (previousIndex >= properties.length - DESKTOP_CARDS) {
 				return previousIndex;
 			}
 
@@ -154,13 +164,22 @@ function FeaturedProperties() {
 				{/* === MOBILE SWIPE INDICATOR === */}
 
 				<div className="mt-5 flex justify-center gap-2 sm:hidden">
-					{properties.map((property, index) => (
-						<span
-							key={property.id}
-							className={` h-1.5 w-1.5 rounded-full transition-all duration-300 
-							${index === mobileIndex ? "w-5 bg-gray-900" : "bg-gray-300"}`}
-						/>
-					))}
+					{Array.from({ length: Math.min(properties.length, 5) }).map(
+						(_, index) => {
+							// Calculate which indicator should be active.
+							const indicatorIndex = Math.min(
+								Math.floor((mobileIndex / properties.length) * 5),
+								4,
+							);
+
+							return (
+								<span
+									key={index}
+									className={`h-1.5 rounded-full transition-all duration-300 ${index === indicatorIndex ? "w-5 bg-gray-900" : "w-1.5 bg-gray-300"}`}
+								/>
+							);
+						},
+					)}
 				</div>
 			</div>
 		</section>

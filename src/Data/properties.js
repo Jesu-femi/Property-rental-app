@@ -1,4 +1,4 @@
-import VillaMakarska from "../../assets/images/villa-makarska.jpg";
+// import VillaMakarska from "../../assets/images/villa-makarska.jpg";
 
 const properties = [
 	{
@@ -6,7 +6,7 @@ const properties = [
 		title: "Villa Makarska",
 		country: "Italy",
 		location: "Mountains",
-		price: "€260",
+		price: "₦260",
 		guests: 8,
 		bedrooms: 8,
 		bathrooms: 4,
@@ -19,7 +19,7 @@ const properties = [
 		title: "Villa Mexico",
 		country: "Mexico",
 		location: "Beach",
-		price: "€260",
+		price: "₦260",
 		guests: 8,
 		bedrooms: 8,
 		bathrooms: 6,
@@ -27,14 +27,12 @@ const properties = [
 		image: "images/Villa Mexico.png",
 	},
     
-];
-const properties = [
   {
-    id: 1,
+    id: 3,
     title: "Villa Luna",
     country: "Greece",
     location: "Seaside",
-    price: "€350",
+    price: "₦350",
     guests: 11,
     bedrooms: 6,
     bathrooms: 5,
@@ -45,11 +43,11 @@ const properties = [
   },
 
   {
-    id: 2,
+    id: 4,
     title: "Villa Mexico",
     country: "Mexico",
     location: "Beach",
-    price: "€260",
+    price: "₦260",
     guests: 8,
     bedrooms: 8,
     bathrooms: 6,
@@ -60,11 +58,11 @@ const properties = [
   },
 
   {
-    id: 3,
+    id: 5,
     title: "Aphrodite",
     country: "Greece",
     location: "Seaside",
-    price: "€350",
+    price: "₦350",
     guests: 12,
     bedrooms: 6,
     bathrooms: 5,
@@ -75,11 +73,11 @@ const properties = [
   },
 
   {
-    id: 4,
+    id: 6,
     title: "Villa Makarska",
     country: "Italy",
     location: "Mountains",
-    price: "€280",
+    price: "₦280",
     guests: 8,
     bedrooms: 8,
     bathrooms: 4,
@@ -90,11 +88,11 @@ const properties = [
   },
 
   {
-    id: 5,
+    id: 7,
     title: "Villa Roxane",
     country: "Greece",
     location: "Seaside",
-    price: "€110",
+    price: "₦110",
     guests: 11,
     bedrooms: 6,
     bathrooms: 5,
@@ -105,11 +103,11 @@ const properties = [
   },
 
   {
-    id: 6,
+    id: 8,
     title: "Villa Sunset",
     country: "Italy",
     location: "Mountains",
-    price: "€280",
+    price: "₦280",
     guests: 8,
     bedrooms: 8,
     bathrooms: 4,
@@ -120,11 +118,11 @@ const properties = [
   },
 
   {
-    id: 7,
+    id: 9,
     title: "White Lady",
     country: "Greece",
     location: "Seaside",
-    price: "€110",
+    price: "₦110",
     guests: 11,
     bedrooms: 6,
     bathrooms: 5,
@@ -135,11 +133,11 @@ const properties = [
   },
 
   {
-    id: 8,
+    id: 10,
     title: "Thebes",
     country: "Greece",
     location: "Seaside",
-    price: "€240",
+    price: "₦240",
     guests: 12,
     bedrooms: 6,
     bathrooms: 5,
@@ -150,11 +148,11 @@ const properties = [
   },
 
   {
-    id: 9,
+    id: 11,
     title: "Villa Marina",
     country: "Croatia",
     location: "Seaside",
-    price: "€420",
+    price: "₦420",
     guests: 10,
     bedrooms: 5,
     bathrooms: 4,
@@ -165,11 +163,11 @@ const properties = [
   },
 
   {
-    id: 10,
+    id: 12,
     title: "Villa Aurora",
     country: "Spain",
     location: "Beach",
-    price: "€390",
+    price: "₦390",
     guests: 9,
     bedrooms: 5,
     bathrooms: 4,
@@ -180,11 +178,11 @@ const properties = [
   },
 
   {
-    id: 11,
+    id: 13,
     title: "Villa Bellavista",
     country: "Italy",
     location: "Countryside",
-    price: "€310",
+    price: "₦310",
     guests: 7,
     bedrooms: 4,
     bathrooms: 3,
@@ -195,11 +193,11 @@ const properties = [
   },
 
   {
-    id: 12,
+    id: 14,
     title: "Villa Sol",
     country: "Spain",
     location: "Village",
-    price: "€450",
+    price: "₦450",
     guests: 10,
     bedrooms: 5,
     bathrooms: 5,
@@ -210,11 +208,11 @@ const properties = [
   },
 
   {
-    id: 13,
+    id: 15,
     title: "Villa Mont Blanc",
     country: "France",
     location: "Mountains",
-    price: "€520",
+    price: "₦520",
     guests: 12,
     bedrooms: 6,
     bathrooms: 5,
@@ -225,11 +223,11 @@ const properties = [
   },
 
   {
-    id: 14,
+    id: 16,
     title: "Villa Olive",
     country: "Greece",
     location: "Countryside",
-    price: "€260",
+    price: "₦260",
     guests: 6,
     bedrooms: 3,
     bathrooms: 2,
@@ -240,11 +238,11 @@ const properties = [
   },
 
   {
-    id: 15,
+    id: 17,
     title: "Villa Santorini",
     country: "Greece",
     location: "Seaside",
-    price: "€600",
+    price: "₦600",
     guests: 8,
     bedrooms: 4,
     bathrooms: 4,
@@ -255,11 +253,11 @@ const properties = [
   },
 
   {
-    id: 16,
+    id: 18,
     title: "Villa Verona",
     country: "Italy",
     location: "Town",
-    price: "€330",
+    price: "₦330",
     guests: 7,
     bedrooms: 4,
     bathrooms: 3,
@@ -270,11 +268,11 @@ const properties = [
   },
 
   {
-    id: 17,
+    id: 19,
     title: "Villa Capri",
     country: "Italy",
     location: "Seaside",
-    price: "€480",
+    price: "₦480",
     guests: 10,
     bedrooms: 5,
     bathrooms: 4,
@@ -285,11 +283,11 @@ const properties = [
   },
 
   {
-    id: 18,
+    id: 20,
     title: "Villa Emerald",
     country: "Croatia",
     location: "Village",
-    price: "€370",
+    price: "₦370",
     guests: 8,
     bedrooms: 4,
     bathrooms: 3,
