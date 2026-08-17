@@ -1,5 +1,5 @@
 // src/components/layout/Footer.jsx
-
+import { socialLinks } from "../../data/socialLinks";
 import {
 	FaFacebookF,
 	FaYoutube,
@@ -39,34 +39,36 @@ function Footer() {
 
 					{/* EMAIL */}
 
-					<p className="mt-2 text-[12px] text-gray-600">info@luxuryrentals.com</p>
+					<p className="mt-2 text-[12px] text-gray-600">
+						info@luxuryrentals.com
+					</p>
 
 					{/* SOCIAL ICONS */}
 
 					<div className="mt-4 flex gap-4 text-gray-600">
 						<a
-							href="#"
+							href={socialLinks.facebook}
 							aria-label="Facebook"
 							className="transition hover:text-gray-900">
 							<FaFacebookF size={14} />
 						</a>
 
 						<a
-							href="#"
+							href={socialLinks.Instagram}
 							aria-label="Instagram"
 							className="transition hover:text-gray-900">
 							<FaInstagram size={14} />
 						</a>
 
 						<a
-							href="#"
+							href={socialLinks.youtube}
 							aria-label="YouTube"
 							className="transition hover:text-gray-900">
 							<FaYoutube size={14} />
 						</a>
 
 						<a
-							href="#"
+							href={socialLinks.WhatsApp}
 							aria-label="WhatsApp"
 							className="transition hover:text-gray-900">
 							<FaWhatsapp size={14} />
