@@ -8,18 +8,15 @@ export const PropertyProvider = ({ children }) => {
   // PROPERTIES
   // ============================================
 
-  // All villas from properties.js
+  // All properties from properties.js
   const [propertiesList] = useState(properties);
 
-  // Currently selected villa
+  // Currently selected property
   const [selectedProperty, setSelectedProperty] = useState(null);
 
   // ============================================
   // SEARCH BAR
   // ============================================
-
- 
-  // Location | Dates | Guests | Price | Search
 
   const [search, setSearch] = useState({
     location: "",
@@ -28,7 +25,9 @@ export const PropertyProvider = ({ children }) => {
     price: "",
   });
 
- 
+  // ============================================
+  // FILTERS
+  // ============================================
 
   const [filters, setFilters] = useState({
     location: [],
@@ -38,6 +37,9 @@ export const PropertyProvider = ({ children }) => {
     amenities: [],
   });
 
+  // ============================================
+  // LOCATION FILTERS
+  // ============================================
 
   const locationFilters = [
     "Seaside",
@@ -47,6 +49,9 @@ export const PropertyProvider = ({ children }) => {
     "Mountains",
   ];
 
+  // ============================================
+  // WELLNESS FILTERS
+  // ============================================
 
   const wellnessFilters = [
     "Swimming pool",
@@ -56,7 +61,10 @@ export const PropertyProvider = ({ children }) => {
     "Sauna",
   ];
 
-  // Outdoor
+  // ============================================
+  // OUTDOOR FILTERS
+  // ============================================
+
   const outdoorFilters = [
     "Outdoor dining table",
     "Outdoor grill",
@@ -65,7 +73,10 @@ export const PropertyProvider = ({ children }) => {
     "Private parking",
   ];
 
-  // Activity
+  // ============================================
+  // ACTIVITY FILTERS
+  // ============================================
+
   const activityFilters = [
     "Playground",
     "PlayStation",
@@ -73,7 +84,10 @@ export const PropertyProvider = ({ children }) => {
     "Table tennis",
   ];
 
-  // Amenities
+  // ============================================
+  // AMENITIES FILTERS
+  // ============================================
+
   const amenitiesFilters = [
     "Fireplace",
     "Air conditioning",
@@ -81,6 +95,9 @@ export const PropertyProvider = ({ children }) => {
     "Iron & Board",
   ];
 
+  // ============================================
+  // SEARCH FUNCTIONS
+  // ============================================
 
   const updateSearch = (field, value) => {
     setSearch((previousSearch) => ({
@@ -98,12 +115,15 @@ export const PropertyProvider = ({ children }) => {
     });
   };
 
-  
+  // ============================================
+  // FILTER FUNCTIONS
+  // ============================================
+
   const toggleFilter = (category, value) => {
     setFilters((previousFilters) => {
       const currentCategory = previousFilters[category];
 
-      
+      // Remove filter if already selected
       if (currentCategory.includes(value)) {
         return {
           ...previousFilters,
@@ -113,13 +133,17 @@ export const PropertyProvider = ({ children }) => {
         };
       }
 
-     
+      // Add filter if not selected
       return {
         ...previousFilters,
         [category]: [...currentCategory, value],
       };
     });
   };
+
+  // ============================================
+  // CLEAR ALL FILTERS
+  // ============================================
 
   const clearFilters = () => {
     setFilters({
@@ -130,6 +154,11 @@ export const PropertyProvider = ({ children }) => {
       amenities: [],
     });
   };
+
+  // ============================================
+  // CHECK IF FILTER IS SELECTED
+  // ============================================
+
   const isFilterSelected = (category, value) => {
     return filters[category].includes(value);
   };
@@ -145,29 +174,25 @@ export const PropertyProvider = ({ children }) => {
     filters.activity.length +
     filters.amenities.length;
 
-  
+  // ============================================
+  // CONTEXT VALUE
+  // ============================================
 
   const value = {
-    // -------------------------
     // Properties
-    // -------------------------
     properties: propertiesList,
 
-    // -------------------------
     // Selected property
-    // -------------------------
     selectedProperty,
     setSelectedProperty,
 
-    // -------------------------
     // Search
-    // -------------------------
     search,
     setSearch,
     updateSearch,
     clearSearch,
 
-  
+    // Filters
     filters,
     setFilters,
     toggleFilter,
@@ -175,9 +200,7 @@ export const PropertyProvider = ({ children }) => {
     isFilterSelected,
     activeFilterCount,
 
-    // -------------------------
     // Filter options
-    // -------------------------
     locationFilters,
     wellnessFilters,
     outdoorFilters,
@@ -192,7 +215,9 @@ export const PropertyProvider = ({ children }) => {
   );
 };
 
-
+// ============================================
+// CUSTOM HOOK
+// ============================================
 
 export const useProperty = () => {
   const context = useContext(PropertyContext);
