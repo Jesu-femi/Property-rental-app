@@ -4,7 +4,7 @@ import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import BrowseProperties from "./pages/BrowseProperties";
 import PropertyDetails from "./pages/PropertyDetails";
-import Enquiry from "./pages/Enquiry";
+import Enquiry from "./pages/EnquiryPage";
 import NotFound from "./pages/NotFound";
 import AboutPage from "./pages/AboutPage";
 
