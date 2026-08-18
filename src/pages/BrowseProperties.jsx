@@ -9,9 +9,9 @@ import properties from "../data/properties";
 function BrowseProperties() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [location, setLocation] = useState("");
-	const [visibleCount, setVisibleCount] = useState(6);
 	const [guests, setGuests] = useState("");
 	const [price, setPrice] = useState("");
+	const [visibleCount, setVisibleCount] = useState(6);
 
 	const filteredProperties = useMemo(() => {
 		const search = searchTerm.trim().toLowerCase();
@@ -23,11 +23,15 @@ function BrowseProperties() {
 				property.location.toLowerCase().includes(search) ||
 				property.country.toLowerCase().includes(search);
 
-			const matchesPrice = !price || property.price <= Number(price);
-
 			const matchesLocation = !location || property.country === location;
 
 			const matchesGuests = !guests || property.guests >= Number(guests);
+
+			const propertyPrice = Number(
+				String(property.price).replace(/[^\d.]/g, ""),
+			);
+
+			const matchesPrice = !price || propertyPrice <= Number(price);
 
 			return matchesSearch && matchesLocation && matchesGuests && matchesPrice;
 		});
@@ -59,10 +63,10 @@ function BrowseProperties() {
 
 	const handleClearFilters = () => {
 		setLocation("");
-		setSearchTerm("");
 		setGuests("");
 		setPrice("");
-		setVisibleCount("");
+		setSearchTerm("");
+		setVisibleCount(6);
 	};
 
 	const handleLoadMore = () => {
