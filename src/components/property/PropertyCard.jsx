@@ -1,7 +1,16 @@
-// src/components/property/PropertyCard.jsx
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function PropertyCard({ property }) {
+	const [isFavourite, setIsFavourite] = useState(false);
+
+	const handleFavourite = (event) => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		setIsFavourite((current) => !current);
+	};
+
 	return (
 		<Link to={`/property/${property.id}`} className="block">
 			<article className="overflow-hidden rounded-2xl bg-white shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -14,7 +23,7 @@ function PropertyCard({ property }) {
 						className="h-full w-full object-cover"
 					/>
 
-					{/* Price */}
+					{/* PRICE */}
 
 					<div className="absolute bottom-4 left-4 rounded-lg bg-white px-4 py-2 shadow-md">
 						<p className="text-sm font-semibold text-gray-800">
@@ -25,28 +34,29 @@ function PropertyCard({ property }) {
 						</p>
 					</div>
 
-					{/* Favourite */}
+					{/* FAVOURITE */}
 
 					<button
 						type="button"
-						aria-label={`Add ${property.title} to favourites`}
-						className=" absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg shadow-md transition hover:scale-110">
-						♡
+						aria-label={
+							isFavourite
+								? `Remove ${property.title} from favourites`
+								: `Add ${property.title} to favourites`
+						}
+						onClick={handleFavourite}
+						className={`absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl shadow-md transition hover:scale-110 ${
+							isFavourite ? "text-red-500" : "text-gray-700"
+						}`}>
+						{isFavourite ? "♥" : "♡"}
 					</button>
 				</div>
 
 				{/* === PROPERTY INFORMATION === */}
 
 				<div className="p-5">
-					{/* Country */}
-
 					<p className="text-sm text-gray-500">{property.country}</p>
 
-					{/* Location */}
-
 					<p className="mt-1 text-sm text-gray-400">{property.location}</p>
-
-					{/* Title */}
 
 					<h3 className="mt-2 text-xl font-semibold text-gray-900">
 						{property.title}

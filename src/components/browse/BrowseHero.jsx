@@ -37,6 +37,8 @@ function BrowseHero({
 						onLocationChange={onLocationChange}
 						guests={guests}
 						onGuestsChange={onGuestsChange}
+						price={price}
+						onPriceChange={onPriceChange}
 						onClearFilters={onClearFilters}
 					/>
 				</div>
