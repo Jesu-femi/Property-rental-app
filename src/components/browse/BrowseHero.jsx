@@ -1,3 +1,4 @@
+import browserbg from "../../assets/images/About bg.jpg";
 import SearchBar from "../property/SearchBar";
 import FilterPanel from "../property/FilterPanel";
 
@@ -13,7 +14,7 @@ function BrowseHero({
 	onClearFilters,
 }) {
 	return (
-		<section className="bg-[#e8e5df] px-5 pb-10 pt-20 sm:px-8 sm:pb-12 sm:pt-24 md:px-10 lg:px-16 lg:pb-14 lg:pt-28">
+		<section className="px-5 pb-10 pt-20 sm:px-8 sm:pb-12 sm:pt-24 md:px-10 lg:px-16 lg:pb-14 lg:pt-28">
 			<div className="mx-auto max-w-5xl">
 				{/* PAGE TITLE */}
 

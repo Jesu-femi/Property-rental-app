@@ -1,6 +1,6 @@
 function SearchBar({ searchTerm, onSearchChange }) {
 	return (
-		<div className="mx-auto mt-10 max-w-4xl">
+		<div className=" absolute mx-auto mt-10 max-w-4xl">
 			<div className="flex items-center rounded-lg bg-white px-4 py-3 shadow-sm">
 				<span className="mr-3 text-gray-400">⌕</span>
 

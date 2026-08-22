@@ -6,11 +6,15 @@ import { socialLinks } from "../../data/socialLinks";
 
 function EnquiryHero() {
 	return (
-		<section className="relative overflow-hidden bg-[#e8e5df] px-5 pb-16 pt-20 sm:px-8 sm:pb-20 sm:pt-24 md:px-10 lg:px-16 lg:pb-28 lg:pt-28">
+		<section className="relative overflow-hidden px-5 pb-16 pt-20 sm:px-8 sm:pb-20 sm:pt-24 md:px-10 lg:px-16 lg:pb-28 lg:pt-28">
 			{/* Background blur / atmosphere */}
-			<div className="pointer-events-none absolute inset-0">
-				<div className="absolute left-1/2 top-0 h-80 w-full -translate-x-1/2 bg-linear-to-b from-[#b8c8d0]/50 via-[#d8d4ce]/30 to-transparent blur-3xl" />
-			</div>
+			<div
+				className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl"
+				style={{ backgroundImage: `url(${herobg})` }}
+			/>
+
+			{/* Background overlay */}
+			<div className="absolute inset-0 bg-white/30" />
 
 			{/* Main content */}
 			<div className="relative mx-auto max-w-6xl">
@@ -34,7 +38,7 @@ function EnquiryHero() {
 
 					<div className="h-64 w-full sm:h-80 md:h-auto md:w-[58%]">
 						<img
-							src= {EnquiryImg}
+							src={EnquiryImg}
 							alt="Luxury rental surroundings"
 							className="h-full w-full object-cover"
 						/>
