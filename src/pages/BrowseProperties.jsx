@@ -5,6 +5,7 @@ import PropertyGrid from "../components/property/PropertyGrid";
 import LoadMore from "../components/property/LoadMore";
 
 import properties from "../data/properties";
+import BrowseContactSection from "../components/browse/BrowseContactSection";
 
 function BrowseProperties() {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -87,13 +88,17 @@ function BrowseProperties() {
 				onClearFilters={handleClearFilters}
 			/>
 
-			<section className="bg-[#e8e5df] px-5 pb-16 sm:px-8 md:px-10 lg:px-16 lg:pb-24">
+			{/* === PROPERTIES === */}
+
+			<section className="bg-[#e8e5df] px-5 pb-20 pt-8 sm:px-8 sm:pb-24 sm:pt-10 md:px-10 md:pt-12 lg:px-16 lg:pb-28 lg:pt-14">
 				<div className="mx-auto max-w-5xl">
 					<PropertyGrid properties={visibleProperties} />
 
 					<LoadMore onLoadMore={handleLoadMore} hasMore={hasMore} />
 				</div>
 			</section>
+
+			<BrowseContactSection />
 		</main>
 	);
 }

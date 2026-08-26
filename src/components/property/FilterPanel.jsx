@@ -10,12 +10,17 @@ function FilterPanel({
 	onPriceChange,
 	onClearFilters,
 }) {
-	const [isFilterOpen, setIsFilterOpen] = useState(false);
+	const [isMoreFiltersOpen, setIsMoreFiltersOpen] = useState(false);
+	const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
 	return (
 		<>
-			<div className="rounded-md bg-white p-5 shadow-sm">
-				<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+			{/* ================= DESKTOP FILTER PANEL ================= */}
+
+			<div className="hidden rounded-md bg-white p-5 shadow-md lg:block">
+				{/* MAIN FILTERS */}
+
+				<div className="grid grid-cols-5 gap-5">
 					{/* LOCATION */}
 
 					<div>
@@ -25,11 +30,8 @@ function FilterPanel({
 
 						<select
 							value={location}
-							onChange={(event) =>
-								onLocationChange(event.target.value)
-							}
-							className="w-full border-b border-gray-300 bg-transparent pb-2 text-xs outline-none"
-						>
+							onChange={(event) => onLocationChange(event.target.value)}
+							className="w-full border-b border-gray-300 bg-transparent pb-2 text-xs outline-none">
 							<option value="">Where to?</option>
 							<option value="Italy">Italy</option>
 							<option value="Greece">Greece</option>
@@ -60,11 +62,8 @@ function FilterPanel({
 
 						<select
 							value={guests}
-							onChange={(event) =>
-								onGuestsChange(event.target.value)
-							}
-							className="w-full border-b border-gray-300 bg-transparent pb-2 text-xs outline-none"
-						>
+							onChange={(event) => onGuestsChange(event.target.value)}
+							className="w-full border-b border-gray-300 bg-transparent pb-2 text-xs outline-none">
 							<option value="">Any guests</option>
 							<option value="2">2+ guests</option>
 							<option value="4">4+ guests</option>
@@ -82,11 +81,8 @@ function FilterPanel({
 
 						<select
 							value={price}
-							onChange={(event) =>
-								onPriceChange(event.target.value)
-							}
-							className="w-full border-b border-gray-300 bg-transparent pb-2 text-xs outline-none"
-						>
+							onChange={(event) => onPriceChange(event.target.value)}
+							className="w-full border-b border-gray-300 bg-transparent pb-2 text-xs outline-none">
 							<option value="">Any price</option>
 							<option value="500">€500 / night or less</option>
 							<option value="1000">€1000 / night or less</option>
@@ -99,37 +95,207 @@ function FilterPanel({
 					<div className="flex items-end">
 						<button
 							type="button"
-							className="w-full rounded-md bg-[#606b75] px-4 py-2 text-xs text-white transition hover:bg-[#4f5962]"
-						>
+							className="w-full rounded-md bg-[#606b75] px-4 py-2 text-xs text-white transition hover:bg-[#4f5962]">
 							Search
 						</button>
 					</div>
 				</div>
 
-				{/* MORE FILTERS */}
+				{/* MORE FILTERS BAR */}
 
 				<div className="mt-5 flex items-center justify-between border-t border-gray-200 pt-4">
 					<button
 						type="button"
-						onClick={() => setIsFilterOpen(true)}
-						className="text-xs font-medium uppercase tracking-wide text-gray-600"
-					>
+						onClick={() => setIsMoreFiltersOpen((current) => !current)}
+						className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-gray-600 transition hover:text-gray-900">
 						More filters
+						<span
+							className={`text-sm transition-transform ${
+								isMoreFiltersOpen ? "rotate-180" : ""
+							}`}>
+							⌄
+						</span>
 					</button>
 
 					<button
 						type="button"
 						onClick={onClearFilters}
-						className="text-xs text-gray-500 transition hover:text-gray-900"
-					>
+						className="text-xs text-gray-500 transition hover:text-gray-900">
+						Clear all
+					</button>
+				</div>
+
+				{/* ================= EXPANDED FILTERS ================= */}
+
+				{isMoreFiltersOpen && (
+					<div className="mt-5 border-t border-gray-200 pt-5">
+						<div className="grid grid-cols-4 gap-8">
+							{/* PROPERTY TYPE */}
+
+							<div>
+								<p className="mb-4 text-[10px] font-medium uppercase text-gray-500">
+									Property type
+								</p>
+
+								<div className="space-y-3">
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										Villa
+									</label>
+
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										Apartment
+									</label>
+
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										House
+									</label>
+								</div>
+							</div>
+
+							{/* AMENITIES */}
+
+							<div>
+								<p className="mb-4 text-[10px] font-medium uppercase text-gray-500">
+									Amenities
+								</p>
+
+								<div className="space-y-3">
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										Swimming pool
+									</label>
+
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										Sea view
+									</label>
+
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										Parking
+									</label>
+								</div>
+							</div>
+
+							{/* FEATURES */}
+
+							<div>
+								<p className="mb-4 text-[10px] font-medium uppercase text-gray-500">
+									Features
+								</p>
+
+								<div className="space-y-3">
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										Air conditioning
+									</label>
+
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										Wi-Fi
+									</label>
+
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										Pet friendly
+									</label>
+								</div>
+							</div>
+
+							{/* BEDROOMS */}
+
+							<div>
+								<p className="mb-4 text-[10px] font-medium uppercase text-gray-500">
+									Bedrooms
+								</p>
+
+								<div className="space-y-3">
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										1+ bedroom
+									</label>
+
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										2+ bedrooms
+									</label>
+
+									<label className="flex items-center gap-2 text-xs text-gray-700">
+										<input type="checkbox" />
+										4+ bedrooms
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				)}
+			</div>
+
+			{/* ================= TABLET / MOBILE FILTER BAR ================= */}
+
+			<div className="lg:hidden">
+				<div className="rounded-md bg-white p-4 shadow-md">
+					<div className="flex items-center justify-between gap-4">
+						<div>
+							<p className="text-[10px] font-medium uppercase text-gray-500">
+								Filters
+							</p>
+
+							<p className="mt-1 text-sm text-gray-700">
+								Find your perfect stay
+							</p>
+						</div>
+
+						<button
+							type="button"
+							onClick={() => setIsMobileFilterOpen(true)}
+							className="rounded-md bg-[#606b75] px-5 py-2.5 text-xs font-medium text-white transition hover:bg-[#4f5962]">
+							More filters
+						</button>
+					</div>
+
+					{/* QUICK FILTERS */}
+
+					<div className="mt-4 grid grid-cols-2 gap-3">
+						<select
+							value={location}
+							onChange={(event) => onLocationChange(event.target.value)}
+							className="w-full rounded-md border border-gray-200 bg-white px-3 py-3 text-xs outline-none">
+							<option value="">Location</option>
+							<option value="Italy">Italy</option>
+							<option value="Greece">Greece</option>
+							<option value="Croatia">Croatia</option>
+						</select>
+
+						<select
+							value={guests}
+							onChange={(event) => onGuestsChange(event.target.value)}
+							className="w-full rounded-md border border-gray-200 bg-white px-3 py-3 text-xs outline-none">
+							<option value="">Guests</option>
+							<option value="2">2+ guests</option>
+							<option value="4">4+ guests</option>
+							<option value="6">6+ guests</option>
+							<option value="8">8+ guests</option>
+						</select>
+					</div>
+
+					<button
+						type="button"
+						onClick={onClearFilters}
+						className="mt-4 text-xs text-gray-500 underline underline-offset-2">
 						Clear all
 					</button>
 				</div>
 			</div>
 
+			{/* ================= MOBILE FILTER MODAL ================= */}
+
 			<FilterModal
-				isOpen={isFilterOpen}
-				onClose={() => setIsFilterOpen(false)}
+				isOpen={isMobileFilterOpen}
+				onClose={() => setIsMobileFilterOpen(false)}
 			/>
 		</>
 	);

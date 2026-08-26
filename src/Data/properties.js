@@ -19,6 +19,47 @@ import villaVerona from "../assets/images/Villa Verona.jpg";
 import villaCapri from "../assets/images/Villa Capri.jpg";
 import villaEmerald from "../assets/images/Villa Emerald.jpg";
 
+const defaultAmenities = [
+	"Swimming pool",
+	"Wi-Fi",
+	"Air conditioning",
+	"Parking",
+	"Fully equipped kitchen",
+	"Outdoor dining",
+];
+
+const defaultHouseRules = [
+	"No smoking",
+	"No parties or events",
+	"Pets allowed on request",
+	"Check-in from 3:00 PM",
+	"Check-out before 11:00 AM",
+];
+const createPropertyDetails = ({
+	image,
+	country,
+	description = "A beautiful holiday villa offering comfortable accommodation and a relaxing setting for an unforgettable stay.",
+}) => ({
+	images: [image, image, image],
+	amenities: [
+		"Swimming pool",
+		"Wi-Fi",
+		"Air conditioning",
+		"Parking",
+		"Fully equipped kitchen",
+		"Outdoor dining",
+	],
+	address: "Name of the street, Italy",
+	houseRules: [
+		"No smoking",
+		"No parties or events",
+		"Pets allowed on request",
+		"Check-in from 3:00 PM",
+		"Check-out before 11:00 AM",
+	],
+	description,
+});
+
 const properties = [
 	{
 		id: 1,
@@ -31,6 +72,12 @@ const properties = [
 		bathrooms: 4,
 		size: 460,
 		image: villaMakarska,
+		images: [villaMakarska, villaMakarska, villaMakarska],
+		description:
+			"A charming mountain villa in Italy offering a peaceful escape surrounded by beautiful natural scenery. The spacious interior and comfortable bedrooms make it an excellent choice for families and groups.",
+		amenities: defaultAmenities,
+		address: "Name of the street, Italy",
+		houseRules: defaultHouseRules,
 	},
 
 	{

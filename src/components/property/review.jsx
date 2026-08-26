@@ -8,7 +8,7 @@ import BookingCard from "../components/property/BookingCard";
 import PropertyLocation from "../components/property/PropertyLocation";
 import HouseRules from "../components/property/HouseRules";
 import RelatedProperties from "../components/property/RelatedProperties";
-import ContactSection from "../components/Home/ContactSection";
+import ContactSection from "../components/home/ContactSection";
 
 function PropertyDetails() {
 	const { id } = useParams();
@@ -135,7 +135,6 @@ function PropertyDetails() {
 						{/* AMENITIES */}
 
 						<div className="mt-10">
-						{/* <PropertyAmenities /> */}
 							<PropertyAmenities property={property} />
 						</div>
 

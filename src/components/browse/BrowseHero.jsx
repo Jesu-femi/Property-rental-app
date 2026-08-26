@@ -14,25 +14,39 @@ function BrowseHero({
 	onClearFilters,
 }) {
 	return (
-		<section className="px-5 pb-10 pt-20 sm:px-8 sm:pb-12 sm:pt-24 md:px-10 lg:px-16 lg:pb-14 lg:pt-28">
-			<div className="mx-auto max-w-5xl">
-				{/* PAGE TITLE */}
+		<section
+			className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
+			style={{ backgroundImage: `url(${browserbg})` }}>
+			{/* Background overlay */}
+			<div className="absolute inset-0 bg-black/35 backdrop-blur-[2px]" />
 
-				<div className="text-center">
-					<h1 className="font-serif text-4xl text-[#171d24] sm:text-5xl">
-						All Villas
-					</h1>
+			{/* HERO CONTENT */}
+			<div className="relative px-5 pb-24 pt-24 sm:px-8 sm:pb-28 sm:pt-28 md:px-10 md:pb-32 md:pt-32 lg:px-16 lg:pb-36 lg:pt-36">
+				<div className="mx-auto max-w-5xl">
+					{/* TITLE */}
 
-					<p className="mt-2 text-sm text-gray-600">Find your perfect stay</p>
+					<div className="text-center text-white">
+						<h1 className="font-serif text-4xl leading-tight sm:text-5xl md:text-6xl">
+							All Villas
+						</h1>
+
+						<p className="mt-3 text-xs text-white/80 sm:text-sm">
+							Find your perfect stay
+						</p>
+					</div>
+
+					{/* SEARCH */}
+
+					<SearchBar
+						searchTerm={searchTerm}
+						onSearchChange={onSearchChange}
+					/>
 				</div>
+			</div>
 
-				{/* SEARCH */}
-
-				<SearchBar searchTerm={searchTerm} onSearchChange={onSearchChange} />
-
-				{/* FILTERS */}
-
-				<div className="mt-5">
+			{/* FILTER */}
+			<div className="relative z-10 -mt-10 px-5 pb-10 sm:px-8 md:px-10 lg:px-16 lg:pb-14">
+				<div className="mx-auto max-w-5xl">
 					<FilterPanel
 						location={location}
 						onLocationChange={onLocationChange}

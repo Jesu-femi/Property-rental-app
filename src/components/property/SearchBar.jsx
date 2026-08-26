@@ -1,8 +1,14 @@
 function SearchBar({ searchTerm, onSearchChange }) {
 	return (
-		<div className=" absolute mx-auto mt-10 max-w-4xl">
-			<div className="flex items-center rounded-lg bg-white px-4 py-3 shadow-sm">
-				<span className="mr-3 text-gray-400">⌕</span>
+		<div className="mx-auto mt-10 w-full max-w-3xl sm:mt-12 md:mt-14">
+			<div className="flex h-12 items-center rounded-lg bg-white px-4 shadow-lg sm:h-14 sm:px-5">
+				{/* SEARCH ICON */}
+
+				<span className="mr-3 text-base text-gray-400 sm:text-lg">
+					⌕
+				</span>
+
+				{/* SEARCH INPUT */}
 
 				<input
 					type="text"
