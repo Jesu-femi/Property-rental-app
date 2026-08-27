@@ -7,6 +7,7 @@ import PropertyDetails from "./pages/PropertyDetails";
 import Enquiry from "./pages/EnquiryPage";
 import NotFound from "./pages/NotFound";
 import AboutPage from "./pages/AboutPage";
+import Favourites from "./pages/Favourites";
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 					<Route path="/browse" element={<BrowseProperties />} />
 					<Route path="/property/:id" element={<PropertyDetails />} />
 					<Route path="/enquiry" element={<Enquiry />} />
+					<Route path="/favourites" element={<Favourites />} />
 				</Route>
 
 				<Route path="*" element={<NotFound />} />

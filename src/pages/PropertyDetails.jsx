@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import properties from "../data/properties";
 
 import PropertyGallery from "../components/property/PropertyGallery";
-import PropertyAmenities from "../components/property/PropertyAmenities";
+import PropertyAmenities from "../components/property/Amenities";
 import BookingCard from "../components/property/BookingCard";
 import PropertyLocation from "../components/property/PropertyLocation";
 import HouseRules from "../components/property/HouseRules";
