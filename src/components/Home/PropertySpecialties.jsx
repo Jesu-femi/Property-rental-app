@@ -1,15 +1,13 @@
 // src/components/home/PropertySpecialties.jsx
+import { Link } from "react-router-dom";
+
 import { Waves, PawPrint, Car, Dumbbell, Ship } from "lucide-react";
 
 function PropertySpecialties() {
-	// ==========================================================
-	// SPECIALTIES DATA
-	// ==========================================================
-	//
+	// ===  SPECIALTIES DATA === //
 	// Keeping the information in an array makes the component
 	// easier to maintain. If we want to add another specialty
 	// later, we only need to add another object here.
-	//
 
 	const specialties = [
 		{ title: "Seafront", description: "have a look", icon: Waves },
@@ -37,10 +35,13 @@ function PropertySpecialties() {
 						const Icon = specialty.icon;
 
 						return (
-							<div
+							<Link
 								key={specialty.title}
-								className={` flex items-start gap-4 py-5 lg:flex-col lg:gap-3 lg:px-5 lg:py-0 
-                                ${index !== 0 ? "border-t border-[#ded8cd] lg:border-l lg:border-t-0" : ""} `}>
+								to={`/browse?specialty=${specialty.title
+									.toLowerCase()
+									.replace(/\s+/g, "-")}`}
+								className={`group flex items-start gap-4 py-5 lg:flex-col lg:gap-3 lg:px-5 lg:py-0 
+	${index !== 0 ? "border-t border-[#ded8cd] lg:border-l lg:border-t-0" : ""}`}>
 								{/* Icon */}
 								<div className="mt-1 shrink-0 text-[#cbbb9f]">
 									<Icon size={24} strokeWidth={1.2} />
@@ -54,10 +55,14 @@ function PropertySpecialties() {
 									</h3>
 									<p className=" mt-1 flex items-center gap-1 text-xs text-gray-500 lg:text-[11px] ">
 										{specialty.description}
-										<span aria-hidden="true">→</span>
+										<span
+											aria-hidden="true"
+											className="transition-transform duration-200 group-hover:translate-x-1">
+											→
+										</span>
 									</p>
 								</div>
-							</div>
+							</Link>
 						);
 					})}
 				</div>

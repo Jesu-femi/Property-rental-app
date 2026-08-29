@@ -1,4 +1,6 @@
 // src/components/home/BecomeHost.jsx
+import { Link } from "react-router-dom";
+
 import becomeHostImage from "../../assets/images/become-host.jpg";
 
 function BecomeHost() {
@@ -46,11 +48,11 @@ function BecomeHost() {
 
 					{/* === CALL-TO-ACTION BUTTON === */}
 
-					<button
-						type="button"
-						className=" mt-7 w-full rounded-lg bg-[#606b75] px-6 py-3.5 text-sm font-medium text-white transition duration-200 hover:bg-[#4f5962] active:scale-[0.98] sm:py-4 ">
+					<Link
+						to="/host"
+						className="mt-7 block w-full rounded-lg bg-[#606b75] px-6 py-3.5 text-center text-sm font-medium text-white transition duration-200 hover:bg-[#4f5962] active:scale-[0.98] sm:py-4">
 						JOIN TODAY
-					</button>
+					</Link>
 				</div>
 			</div>
 		</section>

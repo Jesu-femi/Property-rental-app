@@ -1,8 +1,28 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import aboutBg from "../assets/images/About bg.jpg";
 import properties from "../data/properties";
 import PropertyGrid from "../components/property/PropertyGrid";
 
+import { clearFavourites, getFavourites } from "../utils/favourites";
+
 function Favourites() {
+	const [favouriteIds, setFavouriteIds] = useState([]);
+
+	useEffect(() => {
+		setFavouriteIds(getFavourites());
+	}, []);
+
+	const favouriteProperties = properties.filter((property) =>
+		favouriteIds.includes(property.id),
+	);
+
+	const handleClearAll = () => {
+		clearFavourites();
+		setFavouriteIds([]);
+	};
+
 	return (
 		<main className="relative min-h-screen overflow-hidden">
 			{/* === FULL PAGE BACKGROUND === */}
@@ -14,7 +34,6 @@ function Favourites() {
 					className="h-full w-full scale-105 object-cover blur-md"
 				/>
 
-				{/* Dark overlay */}
 				<div className="absolute inset-0 bg-black/30" />
 			</div>
 
@@ -42,7 +61,7 @@ function Favourites() {
 				</div>
 			</section>
 
-			{/*=== SAVED VILLAS === */}
+			{/* === SAVED VILLAS === */}
 
 			<section className="px-5 pb-20 sm:px-8 md:px-10 lg:px-16 lg:pb-28">
 				<div className="mx-auto max-w-7xl rounded-2xl bg-[#e8e5df]/95 p-5 shadow-2xl backdrop-blur-sm sm:p-8 lg:p-10">
@@ -55,20 +74,44 @@ function Favourites() {
 							</h2>
 
 							<p className="mt-2 text-sm text-gray-500">
-								{properties.length} properties available
+								{favouriteProperties.length}{" "}
+								{favouriteProperties.length === 1 ? "property" : "properties"}{" "}
+								saved
 							</p>
 						</div>
 
-						<button
-							type="button"
-							className="rounded-md border border-gray-400 px-4 py-2 text-xs text-gray-600 transition hover:bg-[#606b75] hover:text-white">
-							Clear all
-						</button>
+						{favouriteProperties.length > 0 && (
+							<button
+								type="button"
+								onClick={handleClearAll}
+								className="rounded-md border border-gray-400 px-4 py-2 text-xs text-gray-600 transition hover:bg-[#606b75] hover:text-white">
+								Clear all
+							</button>
+						)}
 					</div>
 
-					{/* PROPERTY GRID */}
+					{/* PROPERTY GRID / EMPTY STATE */}
 
-					<PropertyGrid properties={properties.slice(0, 6)} />
+					{favouriteProperties.length > 0 ? (
+						<PropertyGrid properties={favouriteProperties} />
+					) : (
+						<div className="py-16 text-center">
+							<h3 className="font-serif text-3xl text-[#171d24]">
+								No favourites yet
+							</h3>
+
+							<p className="mx-auto mt-3 max-w-md text-sm leading-6 text-gray-500">
+								You haven't saved any properties yet. Browse our collection and
+								tap the heart on a property you love.
+							</p>
+
+							<Link
+								to="/browse"
+								className="mt-6 inline-block rounded-md bg-[#606b75] px-6 py-3 text-xs font-medium text-white transition hover:bg-[#4f5962]">
+								Browse properties
+							</Link>
+						</div>
+					)}
 				</div>
 			</section>
 
@@ -95,11 +138,11 @@ function Favourites() {
 								perfect destination for your next stay.
 							</p>
 
-							<a
-								href="/browse"
+							<Link
+								to="/browse"
 								className="mt-5 inline-block rounded-md bg-[#606b75] px-6 py-3 text-xs text-white transition hover:bg-[#4f5962]">
 								Browse properties
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import properties from "../data/properties";
@@ -10,10 +11,24 @@ import HouseRules from "../components/property/HouseRules";
 import RelatedProperties from "../components/property/RelatedProperties";
 import ContactSection from "../components/Home/ContactSection";
 
+import {
+	addFavourite,
+	isFavourite,
+	removeFavourite,
+} from "../utils/favourites";
+
 function PropertyDetails() {
 	const { id } = useParams();
 
 	const property = properties.find((item) => item.id === Number(id));
+
+	const [favourite, setFavourite] = useState(false);
+
+	useEffect(() => {
+		if (property) {
+			setFavourite(isFavourite(property.id));
+		}
+	}, [property]);
 
 	// PROPERTY NOT FOUND
 
@@ -58,9 +73,24 @@ function PropertyDetails() {
 
 						<button
 							type="button"
-							aria-label="Add property to favourites"
-							className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gray-300 text-xl transition hover:bg-gray-900 hover:text-white">
-							♡
+							aria-label={
+								favourite
+									? `Remove ${property.title} from favourites`
+									: `Add ${property.title} to favourites`
+							}
+							onClick={() => {
+								if (favourite) {
+									removeFavourite(property.id);
+									setFavourite(false);
+								} else {
+									addFavourite(property.id);
+									setFavourite(true);
+								}
+							}}
+							className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gray-300 text-xl transition hover:bg-gray-900 hover:text-white ${
+								favourite ? "text-red-500" : "text-gray-700"
+							}`}>
+							{favourite ? "♥" : "♡"}
 						</button>
 					</div>
 
@@ -135,7 +165,7 @@ function PropertyDetails() {
 						{/* AMENITIES */}
 
 						<div className="mt-10">
-						{/* <PropertyAmenities /> */}
+							{/* <PropertyAmenities /> */}
 							<PropertyAmenities property={property} />
 						</div>
 

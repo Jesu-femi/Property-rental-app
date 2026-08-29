@@ -8,6 +8,7 @@ import Enquiry from "./pages/EnquiryPage";
 import NotFound from "./pages/NotFound";
 import AboutPage from "./pages/AboutPage";
 import Favourites from "./pages/Favourites";
+import BecomeHost from "./pages/BecomeHost";
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 					<Route path="/property/:id" element={<PropertyDetails />} />
 					<Route path="/enquiry" element={<Enquiry />} />
 					<Route path="/favourites" element={<Favourites />} />
+					<Route path="/host" element={<BecomeHost />} />
 				</Route>
 
 				<Route path="*" element={<NotFound />} />

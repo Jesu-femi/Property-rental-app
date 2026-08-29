@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function HeroSearch() {
@@ -24,7 +23,7 @@ function HeroSearch() {
 			params.set("price", price);
 		}
 
-		navigate(`/browse-properties?${params.toString()}`);
+		navigate(`/browse?${params.toString()}`);
 	};
 
 	return (
@@ -100,11 +99,12 @@ function HeroSearch() {
 
 			{/* SEARCH */}
 
-			<Link
-				to="/browse"
+			<button
+				type="button"
+				onClick={handleSearch}
 				className="flex items-center justify-center bg-slate-700 px-6 text-sm font-medium text-white transition hover:bg-slate-800">
 				Search
-			</Link>
+			</button>
 		</div>
 	);
 }
