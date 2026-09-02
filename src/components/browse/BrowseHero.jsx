@@ -12,6 +12,8 @@ function BrowseHero({
 	price,
 	onPriceChange,
 	onClearFilters,
+	bedrooms,
+	onBedroomsChange,
 }) {
 	return (
 		<section
@@ -37,10 +39,7 @@ function BrowseHero({
 
 					{/* SEARCH */}
 
-					<SearchBar
-						searchTerm={searchTerm}
-						onSearchChange={onSearchChange}
-					/>
+					<SearchBar searchTerm={searchTerm} onSearchChange={onSearchChange} />
 				</div>
 			</div>
 

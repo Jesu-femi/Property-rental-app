@@ -9,17 +9,27 @@ import BrowseContactSection from "../components/browse/BrowseContactSection";
 import properties from "../data/properties";
 
 function BrowseProperties() {
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [searchParams] = useSearchParams();
 
-	// Get filter values from the URL.
-	const initialLocation = searchParams.get("location") || "";
-	const initialGuests = searchParams.get("guests") || "";
-	const initialPrice = searchParams.get("price") || "";
+	// === MAIN FILTERS ===
 
-	const [searchTerm, setSearchTerm] = useState("");
-	const [location, setLocation] = useState(initialLocation);
-	const [guests, setGuests] = useState(initialGuests);
-	const [price, setPrice] = useState(initialPrice);
+	const [searchTerm, setSearchTerm] = useState(
+		searchParams.get("search") || "",
+	);
+
+	const [location, setLocation] = useState(searchParams.get("location") || "");
+
+	const [guests, setGuests] = useState(searchParams.get("guests") || "");
+
+	const [price, setPrice] = useState(searchParams.get("price") || "");
+
+	const [bedrooms, setBedrooms] = useState("");
+
+	// === SORTING ===
+
+	const [sortBy, setSortBy] = useState("recommended");
+
+	// === LOAD MORE ===
 
 	const [visibleCount, setVisibleCount] = useState(6);
 
@@ -28,7 +38,7 @@ function BrowseProperties() {
 	const filteredProperties = useMemo(() => {
 		const search = searchTerm.trim().toLowerCase();
 
-		return properties.filter((property) => {
+		const filtered = properties.filter((property) => {
 			// SEARCH
 			const matchesSearch =
 				!search ||
@@ -36,7 +46,7 @@ function BrowseProperties() {
 				property.location.toLowerCase().includes(search) ||
 				property.country.toLowerCase().includes(search);
 
-			// LOCATION
+			// LOCATION / COUNTRY
 			const matchesLocation = !location || property.country === location;
 
 			// GUESTS
@@ -49,16 +59,47 @@ function BrowseProperties() {
 
 			const matchesPrice = !price || propertyPrice <= Number(price);
 
-			return matchesSearch && matchesLocation && matchesGuests && matchesPrice;
-		});
-	}, [searchTerm, location, guests, price]);
+			// BEDROOMS
+			const matchesBedrooms =
+				!bedrooms || property.bedrooms >= Number(bedrooms);
 
-	// Only display the number of properties allowed by Load More.
+			return (
+				matchesSearch &&
+				matchesLocation &&
+				matchesGuests &&
+				matchesPrice &&
+				matchesBedrooms
+			);
+		});
+
+		// === SORT RESULTS ===
+
+		if (sortBy === "price-low") {
+			return [...filtered].sort((a, b) => a.price - b.price);
+		}
+
+		if (sortBy === "price-high") {
+			return [...filtered].sort((a, b) => b.price - a.price);
+		}
+
+		if (sortBy === "name-az") {
+			return [...filtered].sort((a, b) => a.title.localeCompare(b.title));
+		}
+
+		if (sortBy === "name-za") {
+			return [...filtered].sort((a, b) => b.title.localeCompare(a.title));
+		}
+
+		return filtered;
+	}, [searchTerm, location, guests, price, bedrooms, sortBy]);
+
+	// === VISIBLE PROPERTIES ===
+
 	const visibleProperties = filteredProperties.slice(0, visibleCount);
 
 	const hasMore = visibleCount < filteredProperties.length;
 
-	// === HANDLERS ===
+	// === FILTER HANDLERS ===
 
 	const handleSearchChange = (value) => {
 		setSearchTerm(value);
@@ -68,51 +109,32 @@ function BrowseProperties() {
 	const handleLocationChange = (value) => {
 		setLocation(value);
 		setVisibleCount(6);
-
-		updateUrl("location", value);
 	};
 
 	const handleGuestsChange = (value) => {
 		setGuests(value);
 		setVisibleCount(6);
-
-		updateUrl("guests", value);
 	};
 
 	const handlePriceChange = (value) => {
 		setPrice(value);
 		setVisibleCount(6);
-
-		updateUrl("price", value);
 	};
 
-	// === UPDATE URL ===
-
-	const updateUrl = (key, value) => {
-		const params = new URLSearchParams(searchParams);
-
-		if (value) {
-			params.set(key, value);
-		} else {
-			params.delete(key);
-		}
-
-		setSearchParams(params);
+	const handleBedroomsChange = (value) => {
+		setBedrooms(value);
+		setVisibleCount(6);
 	};
-
-	// === CLEAR FILTERS ===
 
 	const handleClearFilters = () => {
 		setLocation("");
 		setGuests("");
 		setPrice("");
+		setBedrooms("");
 		setSearchTerm("");
+		setSortBy("recommended");
 		setVisibleCount(6);
-
-		setSearchParams({});
 	};
-
-	// === LOAD MORE ===
 
 	const handleLoadMore = () => {
 		setVisibleCount((currentCount) => currentCount + 3);
@@ -129,6 +151,8 @@ function BrowseProperties() {
 				onGuestsChange={handleGuestsChange}
 				price={price}
 				onPriceChange={handlePriceChange}
+				bedrooms={bedrooms}
+				onBedroomsChange={handleBedroomsChange}
 				onClearFilters={handleClearFilters}
 			/>
 
@@ -136,6 +160,34 @@ function BrowseProperties() {
 
 			<section className="bg-[#e8e5df] px-5 pb-20 pt-8 sm:px-8 sm:pb-24 sm:pt-10 md:px-10 md:pt-12 lg:px-16 lg:pb-28 lg:pt-14">
 				<div className="mx-auto max-w-5xl">
+					{/* RESULT HEADER */}
+
+					<div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+						<p className="text-sm text-gray-600">
+							{filteredProperties.length}{" "}
+							{filteredProperties.length === 1 ? "property" : "properties"}{" "}
+							found
+						</p>
+
+						<select
+							value={sortBy}
+							onChange={(event) => {
+								setSortBy(event.target.value);
+								setVisibleCount(6);
+							}}
+							className="rounded-md border border-gray-300 bg-white px-4 py-2 text-xs text-gray-700 outline-none">
+							<option value="recommended">Recommended</option>
+
+							<option value="price-low">Price: Low to High</option>
+
+							<option value="price-high">Price: High to Low</option>
+
+							<option value="name-az">Name: A to Z</option>
+
+							<option value="name-za">Name: Z to A</option>
+						</select>
+					</div>
+
 					<PropertyGrid properties={visibleProperties} />
 
 					<LoadMore onLoadMore={handleLoadMore} hasMore={hasMore} />

@@ -1,5 +1,42 @@
-function FilterModal({ isOpen, onClose }) {
+import { useState } from "react";
+
+function FilterModal({
+	isOpen,
+	onClose,
+	location = "",
+	onLocationChange,
+	guests = "",
+	onGuestsChange,
+	price = "",
+	onPriceChange,
+	bedrooms = "",
+	onBedroomsChange,
+	onClearFilters,
+}) {
+	const [localLocation, setLocalLocation] = useState(location);
+	const [localGuests, setLocalGuests] = useState(guests);
+	const [localPrice, setLocalPrice] = useState(price);
+	const [localBedrooms, setLocalBedrooms] = useState(bedrooms);
+
 	if (!isOpen) return null;
+
+	const handleApply = () => {
+		onLocationChange(localLocation);
+		onGuestsChange(localGuests);
+		onPriceChange(localPrice);
+		onBedroomsChange(localBedrooms);
+
+		onClose();
+	};
+
+	const handleClear = () => {
+		setLocalLocation("");
+		setLocalGuests("");
+		setLocalPrice("");
+		setLocalBedrooms("");
+
+		onClearFilters();
+	};
 
 	return (
 		<div className="fixed inset-0 z-50 bg-black/40">
@@ -31,11 +68,17 @@ function FilterModal({ isOpen, onClose }) {
 								Location
 							</h3>
 
-							<select className="w-full rounded-lg border border-gray-300 px-4 py-4 text-sm outline-none">
-								<option>Select</option>
-								<option>Italy</option>
-								<option>Greece</option>
-								<option>Croatia</option>
+							<select
+								value={localLocation}
+								onChange={(event) => setLocalLocation(event.target.value)}
+								className="w-full rounded-lg border border-gray-300 px-4 py-4 text-sm outline-none">
+								<option value="">Any location</option>
+								<option value="Italy">Italy</option>
+								<option value="Spain">Spain</option>
+								<option value="Greece">Greece</option>
+								<option value="Croatia">Croatia</option>
+								<option value="France">France</option>
+								<option value="Mexico">Mexico</option>
 							</select>
 						</div>
 
@@ -47,7 +90,7 @@ function FilterModal({ isOpen, onClose }) {
 							<button
 								type="button"
 								className="w-full rounded-lg border border-gray-300 px-4 py-4 text-left text-sm text-gray-700">
-								Check in
+								Any date
 							</button>
 						</div>
 
@@ -58,17 +101,16 @@ function FilterModal({ isOpen, onClose }) {
 								Guests
 							</h3>
 
-							<div className="rounded-lg border border-gray-300 px-5 py-5">
-								<input
-									type="range"
-									min="1"
-									max="12"
-									defaultValue="2"
-									className="w-full"
-								/>
-
-								<p className="mt-3 text-sm text-gray-700">2 guests</p>
-							</div>
+							<select
+								value={localGuests}
+								onChange={(event) => setLocalGuests(event.target.value)}
+								className="w-full rounded-lg border border-gray-300 px-4 py-4 text-sm outline-none">
+								<option value="">Any guests</option>
+								<option value="2">2+ guests</option>
+								<option value="4">4+ guests</option>
+								<option value="6">6+ guests</option>
+								<option value="8">8+ guests</option>
+							</select>
 						</div>
 
 						{/* PRICE */}
@@ -78,16 +120,57 @@ function FilterModal({ isOpen, onClose }) {
 								Price
 							</h3>
 
-							<div className="rounded-lg border border-gray-300 px-5 py-5">
-								<input
-									type="range"
-									min="100"
-									max="3000"
-									defaultValue="1000"
-									className="w-full"
-								/>
+							<select
+								value={localPrice}
+								onChange={(event) => setLocalPrice(event.target.value)}
+								className="w-full rounded-lg border border-gray-300 px-4 py-4 text-sm outline-none">
+								<option value="">Any price</option>
+								<option value="500">₦500 or less</option>
+								<option value="1000">₦1000 or less</option>
+								<option value="1500">₦1500 or less</option>
+							</select>
+						</div>
 
-								<p className="mt-3 text-sm text-gray-700">€1000 / week</p>
+						{/* BEDROOMS */}
+
+						<div>
+							<h3 className="mb-4 text-sm font-semibold text-gray-800">
+								Bedrooms
+							</h3>
+
+							<div className="space-y-4">
+								<label className="flex items-center gap-3 text-sm text-gray-700">
+									<input
+										type="radio"
+										name="mobile-bedrooms"
+										value="1"
+										checked={localBedrooms === "1"}
+										onChange={(event) => setLocalBedrooms(event.target.value)}
+									/>
+									1+ bedroom
+								</label>
+
+								<label className="flex items-center gap-3 text-sm text-gray-700">
+									<input
+										type="radio"
+										name="mobile-bedrooms"
+										value="2"
+										checked={localBedrooms === "2"}
+										onChange={(event) => setLocalBedrooms(event.target.value)}
+									/>
+									2+ bedrooms
+								</label>
+
+								<label className="flex items-center gap-3 text-sm text-gray-700">
+									<input
+										type="radio"
+										name="mobile-bedrooms"
+										value="4"
+										checked={localBedrooms === "4"}
+										onChange={(event) => setLocalBedrooms(event.target.value)}
+									/>
+									4+ bedrooms
+								</label>
 							</div>
 						</div>
 
@@ -128,13 +211,14 @@ function FilterModal({ isOpen, onClose }) {
 				<div className="flex shrink-0 gap-3 border-t border-gray-200 bg-white px-5 py-4 sm:px-6">
 					<button
 						type="button"
+						onClick={handleClear}
 						className="flex-1 rounded-lg border border-[#606b75] px-4 py-3 text-sm text-[#606b75] transition hover:bg-gray-50">
 						Clear all
 					</button>
 
 					<button
 						type="button"
-						onClick={onClose}
+						onClick={handleApply}
 						className="flex-1 rounded-lg bg-[#606b75] px-4 py-3 text-sm text-white transition hover:bg-[#4f5962]">
 						Search
 					</button>

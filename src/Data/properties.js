@@ -79,7 +79,6 @@ const properties = [
 		address: "Name of the street, Italy",
 		houseRules: defaultHouseRules,
 	},
-
 	{
 		id: 2,
 		title: "Villa Mexico",

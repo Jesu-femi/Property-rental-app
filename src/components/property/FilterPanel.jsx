@@ -8,6 +8,8 @@ function FilterPanel({
 	onGuestsChange,
 	price = "",
 	onPriceChange,
+	bedrooms = "",
+	onBedroomsChange,
 	onClearFilters,
 }) {
 	const [isMoreFiltersOpen, setIsMoreFiltersOpen] = useState(false);
@@ -36,6 +38,7 @@ function FilterPanel({
 							<option value="Italy">Italy</option>
 							<option value="Greece">Greece</option>
 							<option value="Croatia">Croatia</option>
+							<option value="Spain">Spain</option>
 						</select>
 					</div>
 
@@ -214,17 +217,35 @@ function FilterPanel({
 
 								<div className="space-y-3">
 									<label className="flex items-center gap-2 text-xs text-gray-700">
-										<input type="checkbox" />
+										<input
+											type="radio"
+											name="bedrooms"
+											value="1"
+											checked={bedrooms === "1"}
+											onChange={(event) => onBedroomsChange(event.target.value)}
+										/>
 										1+ bedroom
 									</label>
 
 									<label className="flex items-center gap-2 text-xs text-gray-700">
-										<input type="checkbox" />
+										<input
+											type="radio"
+											name="bedrooms"
+											value="2"
+											checked={bedrooms === "2"}
+											onChange={(event) => onBedroomsChange(event.target.value)}
+										/>
 										2+ bedrooms
 									</label>
 
 									<label className="flex items-center gap-2 text-xs text-gray-700">
-										<input type="checkbox" />
+										<input
+											type="radio"
+											name="bedrooms"
+											value="4"
+											checked={bedrooms === "4"}
+											onChange={(event) => onBedroomsChange(event.target.value)}
+										/>
 										4+ bedrooms
 									</label>
 								</div>
@@ -234,7 +255,7 @@ function FilterPanel({
 				)}
 			</div>
 
-			{/* ================= TABLET / MOBILE FILTER BAR ================= */}
+			{/* === TABLET / MOBILE FILTER BAR ================= */}
 
 			<div className="lg:hidden">
 				<div className="rounded-md bg-white p-4 shadow-md">
@@ -291,11 +312,20 @@ function FilterPanel({
 				</div>
 			</div>
 
-			{/* ================= MOBILE FILTER MODAL ================= */}
+			{/* === MOBILE FILTER MODAL === */}
 
 			<FilterModal
 				isOpen={isMobileFilterOpen}
 				onClose={() => setIsMobileFilterOpen(false)}
+				location={location}
+				onLocationChange={onLocationChange}
+				guests={guests}
+				onGuestsChange={onGuestsChange}
+				price={price}
+				onPriceChange={onPriceChange}
+				bedrooms={bedrooms}
+				onBedroomsChange={onBedroomsChange}
+				onClearFilters={onClearFilters}
 			/>
 		</>
 	);
