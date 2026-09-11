@@ -6,7 +6,7 @@ import aboutimg1 from "../../assets/images/About page img 1.jpg";
 const AboutHero = () => {
 	return (
 		<main className="relative min-h-screen overflow-hidden">
-			{/* ================= BACKGROUND IMAGE ================= */}
+			{/* === BACKGROUND IMAGE === */}
 			<div
 				className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl"
 				style={{ backgroundImage: `url(${aboutbg})` }}

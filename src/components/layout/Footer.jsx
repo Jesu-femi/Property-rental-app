@@ -1,4 +1,6 @@
 // src/components/layout/Footer.jsx
+import { Link } from "react-router-dom";
+
 import { socialLinks } from "../../data/socialLinks";
 import {
 	FaFacebookF,
@@ -54,7 +56,7 @@ function Footer() {
 						</a>
 
 						<a
-							href={socialLinks.Instagram}
+							href={socialLinks.instagram}
 							aria-label="Instagram"
 							className="transition hover:text-gray-900">
 							<FaInstagram size={14} />
@@ -68,7 +70,7 @@ function Footer() {
 						</a>
 
 						<a
-							href={socialLinks.WhatsApp}
+							href={socialLinks.whatsapp}
 							aria-label="WhatsApp"
 							className="transition hover:text-gray-900">
 							<FaWhatsapp size={14} />
