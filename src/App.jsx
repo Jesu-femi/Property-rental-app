@@ -13,7 +13,7 @@ import Favourites from "./pages/Favourites";
 import BecomeHost from "./pages/BecomeHost";
 import HostApply from "./pages/HostApply";
 
-import Loader from "./components/ui/Loader";
+import Loader from "./components/UI/Loader";
 import {
 	fetchProperties,
 	selectPropertiesStatus,
