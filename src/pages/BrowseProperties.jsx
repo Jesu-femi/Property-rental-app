@@ -7,7 +7,7 @@ import PropertyGrid from "../components/property/PropertyGrid";
 import LoadMore from "../components/property/LoadMore";
 import BrowseContactSection from "../components/browse/BrowseContactSection";
 
-import properties from "../data/properties";
+import properties from "../Data/Properties";
 
 import {
 	selectFilters,

@@ -1,5 +1,5 @@
-import Hero from "../components/home/Hero";
-import FeaturedProperties from "../components/home/FeaturedProperties";
+import Hero from "../components/Home/Hero";
+import FeaturedProperties from "../components/Home/FeaturedProperties";
 import Regions from "../components/Home/Regions";
 import PropertySpecialties from "../components/Home/PropertySpecialties";
 import BecomeHost from "../components/Home/BecomeHost";
