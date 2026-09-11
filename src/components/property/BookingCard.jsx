@@ -52,7 +52,7 @@ function BookingCard({ property }) {
 			<div className="flex items-baseline justify-between">
 				<div>
 					<span className="text-2xl font-semibold text-gray-900">
-						€{property.price}
+						₦{property.price}
 					</span>
 
 					<span className="ml-1 text-sm text-gray-500">/night</span>

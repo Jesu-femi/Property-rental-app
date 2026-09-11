@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { clearEnquiry } from "../../redux/slices/enquirySlice";
 
 function Navbar() {
+	const dispatch = useDispatch();
+
 	// MOBILE MENU STATE
 
 	// Keeps track of whether the mobile navigation menu is open.
@@ -23,6 +28,22 @@ function Navbar() {
 		{ name: "Favourites", path: "/favourites" },
 		{ name: "Enquiry", path: "/enquiry" },
 	];
+
+	// Runs on every nav link click, but only actually does something
+	// for "/enquiry". We check the path here instead of writing a
+	// separate one-off <NavLink> just for Enquiry, so the links array
+	// stays the single source of truth for the nav's structure.
+	const handleNavClick = (path) => {
+		if (path === "/enquiry") {
+			// Clicking the plain nav "Enquiry" link means a general
+			// visit, not "make an enquiry about the property I was
+			// just viewing" — so any leftover property context from
+			// a previous BookingCard visit needs to be cleared,
+			// otherwise the Enquiry page would incorrectly still show
+			// "Enquiring about: [last property]".
+			dispatch(clearEnquiry());
+		}
+	};
 
 	// ===  NAVBAR SCROLL BEHAVIOR ===
 
@@ -112,6 +133,7 @@ function Navbar() {
 						<li key={link.path}>
 							<NavLink
 								to={link.path}
+								onClick={() => handleNavClick(link.path)}
 								className={({ isActive }) =>
 									`text-xs uppercase tracking-wide transition duration-300
 									${isActive ? "text-white" : "text-white/70 hover:text-white"}`
@@ -145,7 +167,10 @@ function Navbar() {
 							<li key={link.path}>
 								<NavLink
 									to={link.path}
-									onClick={() => setIsMenuOpen(false)}
+									onClick={() => {
+										setIsMenuOpen(false);
+										handleNavClick(link.path);
+									}}
 									className={({ isActive }) =>
 										`block text-sm uppercase tracking-widest transition
 										${isActive ? "text-white" : "text-white/70 hover:text-white"}`

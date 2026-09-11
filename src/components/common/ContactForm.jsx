@@ -1,6 +1,11 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { clearEnquiry } from "../../redux/slices/enquirySlice";
 
 function ContactForm({ className = "", property = null }) {
+	const dispatch = useDispatch();
+
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -83,6 +88,12 @@ function ContactForm({ className = "", property = null }) {
 					onClick={() => {
 						setSubmitted(false);
 						setFormData({ name: "", email: "", message: "", terms: false });
+
+						// A "new" message should start general, not still tied to
+						// whichever property this enquiry happened to be about —
+						// otherwise it looks like a fresh enquiry but silently
+						// carries over stale property context from Redux.
+						dispatch(clearEnquiry());
 					}}
 					className="mt-6 rounded-md bg-[#606b75] px-7 py-2.5 text-xs font-medium text-white transition hover:bg-[#4f5962]">
 					Send another message

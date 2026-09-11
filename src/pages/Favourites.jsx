@@ -1,26 +1,30 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import aboutBg from "../assets/images/About bg.jpg";
 import properties from "../data/properties";
 import PropertyGrid from "../components/property/PropertyGrid";
 
-import { clearFavourites, getFavourites } from "../utils/favourites";
+import {
+	clearFavourites,
+	selectFavouriteIds,
+} from "../redux/slices/favouritesSlice";
 
 function Favourites() {
-	const [favouriteIds, setFavouriteIds] = useState([]);
-
-	useEffect(() => {
-		setFavouriteIds(getFavourites());
-	}, []);
+	// Same pattern as PropertyCard/PropertyDetails: read straight from
+	// the store instead of loading a local copy via useEffect. This is
+	// also what makes this page automatically consistent with the
+	// heart button anywhere else in the app — toggle a favourite on
+	// Browse, this page reflects it without any extra wiring.
+	const dispatch = useDispatch();
+	const favouriteIds = useSelector(selectFavouriteIds);
 
 	const favouriteProperties = properties.filter((property) =>
 		favouriteIds.includes(property.id),
 	);
 
 	const handleClearAll = () => {
-		clearFavourites();
-		setFavouriteIds([]);
+		dispatch(clearFavourites());
 	};
 
 	return (

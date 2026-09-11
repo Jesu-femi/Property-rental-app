@@ -53,6 +53,8 @@ function BrowseHero({
 						onGuestsChange={onGuestsChange}
 						price={price}
 						onPriceChange={onPriceChange}
+						bedrooms={bedrooms}
+						onBedroomsChange={onBedroomsChange}
 						onClearFilters={onClearFilters}
 					/>
 				</div>

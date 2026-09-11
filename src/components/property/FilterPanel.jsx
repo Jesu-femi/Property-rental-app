@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FilterModal from "./FiltersModal";
+import { locationOptions } from "../../utils/Location";
 
 function FilterPanel({
 	location = "",
@@ -17,12 +18,15 @@ function FilterPanel({
 
 	return (
 		<>
-			{/* ================= DESKTOP FILTER PANEL ================= */}
+			{/* === DESKTOP FILTER PANEL === */}
 
 			<div className="hidden rounded-md bg-white p-5 shadow-md lg:block">
 				{/* MAIN FILTERS */}
+				{/* Date field removed — it was decorative, with no state or
+				    filtering logic behind it anywhere in the app. Grid
+				    dropped from 5 columns to 4 to match. */}
 
-				<div className="grid grid-cols-5 gap-5">
+				<div className="grid grid-cols-4 gap-5">
 					{/* LOCATION */}
 
 					<div>
@@ -35,24 +39,11 @@ function FilterPanel({
 							onChange={(event) => onLocationChange(event.target.value)}
 							className="w-full border-b border-gray-300 bg-transparent pb-2 text-xs outline-none">
 							<option value="">Where to?</option>
-							<option value="Italy">Italy</option>
-							<option value="Greece">Greece</option>
-							<option value="Croatia">Croatia</option>
-							<option value="Spain">Spain</option>
-						</select>
-					</div>
-
-					{/* DATE */}
-
-					<div>
-						<p className="mb-2 text-[10px] font-medium uppercase text-gray-500">
-							Date
-						</p>
-
-						<select className="w-full border-b border-gray-300 bg-transparent pb-2 text-xs outline-none">
-							<option>Any date</option>
-							<option>This week</option>
-							<option>This month</option>
+							{locationOptions.map((country) => (
+								<option key={country} value={country}>
+									{country}
+								</option>
+							))}
 						</select>
 					</div>
 
@@ -87,9 +78,9 @@ function FilterPanel({
 							onChange={(event) => onPriceChange(event.target.value)}
 							className="w-full border-b border-gray-300 bg-transparent pb-2 text-xs outline-none">
 							<option value="">Any price</option>
-							<option value="500">€500 / night or less</option>
-							<option value="1000">€1000 / night or less</option>
-							<option value="1500">€1500 / night or less</option>
+							<option value="500">₦500 / night or less</option>
+							<option value="1000">₦1000 / night or less</option>
+							<option value="1500">₦1500 / night or less</option>
 						</select>
 					</div>
 
@@ -98,6 +89,18 @@ function FilterPanel({
 					<div className="flex items-end">
 						<button
 							type="button"
+							onClick={() => {
+								// Filtering already happens live as fields change —
+								// there's nothing to "trigger" here. Instead, this
+								// button does something genuinely useful: jumps the
+								// user down to the results, since on smaller desktop
+								// windows the filter panel can push results below the
+								// fold. #browse-results is added to the results
+								// section in BrowseProperties.jsx.
+								document
+									.getElementById("browse-results")
+									?.scrollIntoView({ behavior: "smooth" });
+							}}
 							className="w-full rounded-md bg-[#606b75] px-4 py-2 text-xs text-white transition hover:bg-[#4f5962]">
 							Search
 						</button>
@@ -128,7 +131,7 @@ function FilterPanel({
 					</button>
 				</div>
 
-				{/* ================= EXPANDED FILTERS ================= */}
+				{/* === EXPANDED FILTERS === */}
 
 				{isMoreFiltersOpen && (
 					<div className="mt-5 border-t border-gray-200 pt-5">
@@ -255,7 +258,7 @@ function FilterPanel({
 				)}
 			</div>
 
-			{/* === TABLET / MOBILE FILTER BAR ================= */}
+			{/* === TABLET / MOBILE FILTER BAR === */}
 
 			<div className="lg:hidden">
 				<div className="rounded-md bg-white p-4 shadow-md">
@@ -286,9 +289,11 @@ function FilterPanel({
 							onChange={(event) => onLocationChange(event.target.value)}
 							className="w-full rounded-md border border-gray-200 bg-white px-3 py-3 text-xs outline-none">
 							<option value="">Location</option>
-							<option value="Italy">Italy</option>
-							<option value="Greece">Greece</option>
-							<option value="Croatia">Croatia</option>
+							{locationOptions.map((country) => (
+								<option key={country} value={country}>
+									{country}
+								</option>
+							))}
 						</select>
 
 						<select

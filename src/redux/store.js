@@ -7,6 +7,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import favouritesReducer from "./slices/favouritesSlice";
 import enquiryReducer from "./slices/enquirySlice";
+import filtersReducer from "./slices/filtersSlice";
+import propertiesReducer from "./slices/propertiesSlice";
 
 export const store = configureStore({
 	// "reducer" is a map of "slice name" -> "slice reducer function".
@@ -15,6 +17,8 @@ export const store = configureStore({
 	// Then later: filters: filtersReducer
 	reducer: {
 		favourites: favouritesReducer, // state.favourites.ids
-        enquiry: enquiryReducer,
+		enquiry: enquiryReducer,
+		filters: filtersReducer,
+		properties: propertiesReducer,
 	},
 });

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { locationOptions } from "../../utils/Location";
 
 function FilterModal({
 	isOpen,
@@ -17,6 +18,27 @@ function FilterModal({
 	const [localGuests, setLocalGuests] = useState(guests);
 	const [localPrice, setLocalPrice] = useState(price);
 	const [localBedrooms, setLocalBedrooms] = useState(bedrooms);
+
+	// This component never actually unmounts — "if (!isOpen) return
+	// null" only hides its output, so its local draft state (the
+	// four useState calls above) was only ever initialized ONCE, on
+	// first mount. Any filter changes made elsewhere (e.g. the quick
+	// filters in the mobile bar, or Clear All) never updated these
+	// local copies, so reopening the modal could show outdated values
+	// instead of what's actually currently applied.
+	//
+	// Fix: whenever isOpen flips to true (the modal is being opened),
+	// re-copy the real applied values into local state. This makes
+	// "opening the modal" always start from the true current filters,
+	// which is what a user would expect.
+	useEffect(() => {
+		if (isOpen) {
+			setLocalLocation(location);
+			setLocalGuests(guests);
+			setLocalPrice(price);
+			setLocalBedrooms(bedrooms);
+		}
+	}, [isOpen, location, guests, price, bedrooms]);
 
 	if (!isOpen) return null;
 
@@ -73,26 +95,15 @@ function FilterModal({
 								onChange={(event) => setLocalLocation(event.target.value)}
 								className="w-full rounded-lg border border-gray-300 px-4 py-4 text-sm outline-none">
 								<option value="">Any location</option>
-								<option value="Italy">Italy</option>
-								<option value="Spain">Spain</option>
-								<option value="Greece">Greece</option>
-								<option value="Croatia">Croatia</option>
-								<option value="France">France</option>
-								<option value="Mexico">Mexico</option>
+								{locationOptions.map((country) => (
+									<option key={country} value={country}>
+										{country}
+									</option>
+								))}
 							</select>
 						</div>
 
-						{/* DATE */}
-
-						<div>
-							<h3 className="mb-3 text-sm font-semibold text-gray-800">Date</h3>
-
-							<button
-								type="button"
-								className="w-full rounded-lg border border-gray-300 px-4 py-4 text-left text-sm text-gray-700">
-								Any date
-							</button>
-						</div>
+						{/* Date section removed — see FilterPanel for why. */}
 
 						{/* GUESTS */}
 
