@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-import properties from "../../data/properties";
+import properties from "../../Data/properties";
 import PropertyCard from "../property/PropertyCard";
 
 function FeaturedProperties() {

@@ -2,7 +2,7 @@ import herobg from "../../assets/images/About bg.jpg";
 import EnquiryImg from "../../assets/images/Enquiryy img 1.jpg";
 
 import { FaFacebookF, FaYoutube, FaWhatsapp } from "react-icons/fa";
-import { socialLinks } from "../../data/socialLinks";
+import { socialLinks } from "../../Data/socialLinks";
 
 function EnquiryHero() {
 	return (

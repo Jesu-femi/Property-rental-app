@@ -2,7 +2,7 @@
 
 import villaMakarska from "../assets/images/Villa Makarska.jpg";
 import villaMexico from "../assets/images/Villa Mexico.png";
-import villaLuna from "../assets/images/Villa Luna.png";
+import villaLuna from "../assets/images/Villa luna.png";
 import villaAphrodite from "../assets/images/Villa Aphrodite.jpg";
 import villaRoxane from "../assets/images/Villa Roxane.jpg";
 import villaSunset from "../assets/images/Villa Sunset.jpg";
