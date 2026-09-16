@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import properties from "../data/properties";
+import properties from "../Data/properties";
 
 import PropertyGallery from "../components/property/PropertyGallery";
 import PropertyAmenities from "../components/property/Amenities";
