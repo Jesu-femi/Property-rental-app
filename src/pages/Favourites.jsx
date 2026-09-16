@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import aboutBg from "../assets/images/About bg.jpg";
-import properties from "../data/properties";
+import properties from "../Data/properties";
 import PropertyGrid from "../components/property/PropertyGrid";
 
 import {

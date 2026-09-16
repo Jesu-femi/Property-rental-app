@@ -1,7 +1,7 @@
 // src/components/layout/Footer.jsx
 import { Link } from "react-router-dom";
 
-import { socialLinks } from "../../data/socialLinks";
+import { socialLinks } from "../../Data/socialLinks";
 import {
 	FaFacebookF,
 	FaYoutube,

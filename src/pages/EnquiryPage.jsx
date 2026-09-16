@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import properties from "../data/properties";
+import properties from "../Data/properties";
 
 import EnquiryContact from "../components/enquiry/EnquiryContact";
 import EnquiryHero from "../components/enquiry/EnquiryHero";

@@ -9,7 +9,7 @@
 // Deriving this from the real properties array means it's always
 // accurate — add a property with a new country, and every filter UI
 // picks it up automatically, with nothing to remember to update.
-import properties from "../data/properties";
+import properties from "../Data/properties";
 
 // Set() removes duplicates, then we sort alphabetically for a
 // predictable, readable dropdown order.
