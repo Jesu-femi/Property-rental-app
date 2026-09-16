@@ -4,7 +4,7 @@ import BrowseHero from "../components/browse/BrowseHero";
 import PropertyGrid from "../components/property/PropertyGrid";
 import LoadMore from "../components/property/LoadMore";
 
-import properties from "../data/properties";
+import properties from "../Data/properties";
 
 function BrowseProperties() {
 	const [searchTerm, setSearchTerm] = useState("");
