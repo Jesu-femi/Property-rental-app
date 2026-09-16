@@ -7,7 +7,7 @@ function PropertyLocation({ property }) {
 				{property.address || `${property.location}, ${property.country}`}
 			</p>
 
-			{/* MAP PLACEHOLDER */}
+			{/* MAP PLACEHOLDERs */}
 
 			<div className="mt-6 flex h-72 items-center justify-center rounded-2xl bg-[#e8e5df]">
 				<div className="text-center">
