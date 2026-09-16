@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { locationOptions } from "../../utils/Location";
+import { useSelector } from "react-redux";
+import { selectLocationOptions } from "../../redux/slices/propertiesSlice";
 
 function FilterModal({
 	isOpen,
@@ -14,6 +15,8 @@ function FilterModal({
 	onBedroomsChange,
 	onClearFilters,
 }) {
+	const locationOptions = useSelector(selectLocationOptions);
+
 	const [localLocation, setLocalLocation] = useState(location);
 	const [localGuests, setLocalGuests] = useState(guests);
 	const [localPrice, setLocalPrice] = useState(price);
@@ -63,8 +66,6 @@ function FilterModal({
 	return (
 		<div className="fixed inset-0 z-50 bg-black/40">
 			<div className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white shadow-2xl">
-				{/* HEADER */}
-
 				<div className="flex shrink-0 items-center justify-between border-b border-gray-200 px-5 py-5 sm:px-6">
 					<h2 className="font-serif text-2xl font-semibold text-[#171d24]">
 						Filters
@@ -79,12 +80,8 @@ function FilterModal({
 					</button>
 				</div>
 
-				{/* CONTENT */}
-
 				<div className="flex-1 overflow-y-auto px-5 py-6 sm:px-6">
 					<div className="space-y-7">
-						{/* LOCATION */}
-
 						<div>
 							<h3 className="mb-3 text-sm font-semibold text-gray-800">
 								Location
@@ -103,10 +100,6 @@ function FilterModal({
 							</select>
 						</div>
 
-						{/* Date section removed — see FilterPanel for why. */}
-
-						{/* GUESTS */}
-
 						<div>
 							<h3 className="mb-3 text-sm font-semibold text-gray-800">
 								Guests
@@ -124,8 +117,6 @@ function FilterModal({
 							</select>
 						</div>
 
-						{/* PRICE */}
-
 						<div>
 							<h3 className="mb-3 text-sm font-semibold text-gray-800">
 								Price
@@ -141,8 +132,6 @@ function FilterModal({
 								<option value="1500">₦1500 or less</option>
 							</select>
 						</div>
-
-						{/* BEDROOMS */}
 
 						<div>
 							<h3 className="mb-4 text-sm font-semibold text-gray-800">
@@ -185,8 +174,6 @@ function FilterModal({
 							</div>
 						</div>
 
-						{/* MORE FILTERS */}
-
 						<div>
 							<h3 className="mb-5 text-sm font-semibold uppercase tracking-wide text-gray-600">
 								More filters
@@ -216,8 +203,6 @@ function FilterModal({
 						</div>
 					</div>
 				</div>
-
-				{/* FOOTER */}
 
 				<div className="flex shrink-0 gap-3 border-t border-gray-200 bg-white px-5 py-4 sm:px-6">
 					<button

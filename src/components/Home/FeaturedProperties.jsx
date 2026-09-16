@@ -1,9 +1,14 @@
 import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 
-import properties from "../../Data/Properties";
+import { selectAllProperties } from "../../redux/slices/propertiesSlice";
 import PropertyCard from "../property/PropertyCard";
 
 function FeaturedProperties() {
+	// Was: import properties from "../../Data/Properties" — now reads
+	// from the store, same as every other converted page.
+	const properties = useSelector(selectAllProperties);
+
 	// CURRENT CAROUSEL POSITION on destop
 
 	const [currentIndex, setCurrentIndex] = useState(0);

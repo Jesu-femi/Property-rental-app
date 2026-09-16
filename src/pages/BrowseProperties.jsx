@@ -7,7 +7,7 @@ import PropertyGrid from "../components/property/PropertyGrid";
 import LoadMore from "../components/property/LoadMore";
 import BrowseContactSection from "../components/browse/BrowseContactSection";
 
-import properties from "../Data/properties";
+import { selectAllProperties } from "../redux/slices/propertiesSlice";
 
 import {
 	selectFilters,
@@ -29,6 +29,13 @@ function BrowseProperties() {
 	// All six pieces of filter/sort/pagination state now come from
 	// Redux instead of six separate useState calls. useSelector
 	// re-renders this component whenever any of them change.
+
+	// Was: import properties from "../data/properties" — a static,
+	// always-available array. Now: read from the store, populated once
+	// by App.jsx's fetchProperties() dispatch before this page can even
+	// render (the App-level loading gate guarantees that).
+	const properties = useSelector(selectAllProperties);
+
 	const {
 		searchTerm,
 		location,
@@ -54,6 +61,8 @@ function BrowseProperties() {
 		// Intentionally empty deps: this should only run once, when the
 		// page is first entered — same as a useState initializer only
 		// running on first mount, not on every render.
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -106,7 +115,12 @@ function BrowseProperties() {
 			return [...filtered].sort((a, b) => b.title.localeCompare(a.title));
 		}
 		return filtered;
-	}, [searchTerm, location, guests, price, bedrooms, sortBy]);
+		// "properties" added here — it wasn't a dependency before since
+		// the static import was always the same reference; now it comes
+		// from the store, so it belongs in the dependency list even
+		// though in practice it only changes once (when the fetch
+		// completes, which already happens before this page can render).
+	}, [properties, searchTerm, location, guests, price, bedrooms, sortBy]);
 
 	const visibleProperties = filteredProperties.slice(0, visibleCount);
 	const hasMore = visibleCount < filteredProperties.length;
@@ -138,15 +152,12 @@ function BrowseProperties() {
 				onBedroomsChange={handleBedroomsChange}
 				onClearFilters={handleClearFilters}
 			/>
-
 			{/* === PROPERTIES === */}
-
 			<section
 				id="browse-results"
 				className="bg-[#e8e5df] px-5 pb-20 pt-8 sm:px-8 sm:pb-24 sm:pt-10 md:px-10 md:pt-12 lg:px-16 lg:pb-28 lg:pt-14">
 				<div className="mx-auto max-w-5xl">
 					{/* RESULT HEADER */}
-
 					<div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 						<p className="text-sm text-gray-600">
 							{filteredProperties.length}{" "}

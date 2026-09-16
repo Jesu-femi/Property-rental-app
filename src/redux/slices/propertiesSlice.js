@@ -77,5 +77,17 @@ const propertiesSlice = createSlice({
 export const selectAllProperties = (state) => state.properties.items;
 export const selectPropertiesStatus = (state) => state.properties.status;
 export const selectPropertiesError = (state) => state.properties.error;
+// Replaces utils/locations.js entirely. This used to be a plain array
+// computed once, at import time, from the static properties.js file —
+// that's no longer possible now that property data arrives
+// asynchronously from MockAPI. As a selector, this recomputes from
+// whatever's currently in the store, which is safe here because App.jsx
+// already gates every page behind the loading screen until properties
+// have actually loaded — by the time any component calls this, real
+// data is guaranteed to be there.
+export const selectLocationOptions = (state) =>
+	[
+		...new Set(state.properties.items.map((property) => property.country)),
+	].sort();
 
 export default propertiesSlice.reducer;
