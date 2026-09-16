@@ -1,5 +1,5 @@
 import { FaFacebookF, FaYoutube, FaWhatsapp } from "react-icons/fa";
-import { socialLinks } from "../../data/socialLinks";
+import { socialLinks } from "../../Data/socialLinks";
 
 function ContactInfo() {
 	// const socialLinks = {

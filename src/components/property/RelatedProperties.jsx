@@ -1,5 +1,5 @@
 import PropertyCard from "./PropertyCard";
-import properties from "../../data/properties";
+import properties from "../../Data/properties";
 
 function RelatedProperties({ property }) {
 	const relatedProperties = properties
