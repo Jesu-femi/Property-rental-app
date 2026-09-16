@@ -1,4 +1,5 @@
 // src/components/home/Regions.jsx
+import { Link } from "react-router-dom";
 
 import mountainsImage from "../../assets/images/mountain.jpg";
 import coastlineImage from "../../assets/images/coastline.jpg";
@@ -32,55 +33,62 @@ function Regions() {
 				<div className=" mt-10 grid grid-cols-1 gap-4 sm:mt-12 lg:grid-cols-2 lg:gap-2 ">
 					{/* === MOUNTAINS === */}
 
-					<div className=" relative h-75 overflow-hidden rounded-tl-[40px] rounded-br-sm sm:h-90 lg:h-85 ">
-						{/* Background image */}
+					<Link
+						to="/browse?region=mountains"
+						className="group relative block h-75 overflow-hidden rounded-tl-[40px] rounded-br-sm sm:h-90 lg:h-85">
+						<div className=" relative h-75 overflow-hidden rounded-tl-[40px] rounded-br-sm sm:h-90 lg:h-85 ">
+							{/* Background image */}
 
-						<img
-							src={mountainsImage}
-							alt="Mountains region"
-							className=" absolute inset-0 h-full w-full object-cover "
-						/>
+							<img
+								src={mountainsImage}
+								alt="Mountains region"
+								className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+							/>
 
-						{/* Dark overlay */}
+							{/* Dark overlay */}
 
-						<div className=" absolute inset-0 bg-black/10 " />
+							<div className=" absolute inset-0 bg-black/10 " />
 
-						{/* Text */}
+							{/* Text */}
 
-						<div className=" absolute bottom-7 left-5 text-white sm:bottom-8 sm:left-7 ">
-							<h3 className=" font-serif text-4xl leading-none sm:text-5xl ">
-								Mountains
-							</h3>
+							<div className=" absolute bottom-7 left-5 text-white sm:bottom-8 sm:left-7 ">
+								<h3 className=" font-serif text-4xl leading-none sm:text-5xl ">
+									Mountains
+								</h3>
 
-							<p className=" mt-1 text-xs sm:text-sm ">87 properties</p>
+								<p className=" mt-1 text-xs sm:text-sm ">87 properties</p>
+							</div>
 						</div>
-					</div>
+					</Link>
 
 					{/* === COASTLINE ===*/}
+					<Link
+						to="/browse?region=mountains"
+						className="group relative block h-75 overflow-hidden rounded-tl-[40px] rounded-br-sm sm:h-90 lg:h-85">
+						<div className=" relative h-75 overflow-hidden rounded-tl-[40px] rounded-br-[40px] sm:h-90 lg:h-85 ">
+							{/* Background image */}
 
-					<div className=" relative h-75 overflow-hidden rounded-tl-[40px] rounded-br-[40px] sm:h-90 lg:h-85 ">
-						{/* Background image */}
+							<img
+								src={coastlineImage}
+								alt="Coastline region"
+								className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+							/>
 
-						<img
-							src={coastlineImage}
-							alt="Coastline region"
-							className=" absolute inset-0 h-full w-full object-cover "
-						/>
+							{/* Dark overlay */}
 
-						{/* Dark overlay */}
+							<div className=" absolute inset-0 bg-black/10 " />
 
-						<div className=" absolute inset-0 bg-black/10 " />
+							{/* Text */}
 
-						{/* Text */}
+							<div className=" absolute bottom-7 left-5 text-white sm:bottom-8 sm:left-7 ">
+								<h3 className=" font-serif text-4xl leading-none sm:text-5xl ">
+									Coastline
+								</h3>
 
-						<div className=" absolute bottom-7 left-5 text-white sm:bottom-8 sm:left-7 ">
-							<h3 className=" font-serif text-4xl leading-none sm:text-5xl ">
-								Coastline
-							</h3>
-
-							<p className=" mt-1 text-xs sm:text-sm ">64 properties</p>
+								<p className=" mt-1 text-xs sm:text-sm ">64 properties</p>
+							</div>
 						</div>
-					</div>
+					</Link>
 				</div>
 			</div>
 		</section>

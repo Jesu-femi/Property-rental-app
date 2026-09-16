@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { locationOptions } from "../../utils/Location"; // confirm this path matches your folder depth
 
 function HeroSearch() {
 	const navigate = useNavigate();
@@ -24,11 +24,11 @@ function HeroSearch() {
 			params.set("price", price);
 		}
 
-		navigate(`/browse-properties?${params.toString()}`);
+		navigate(`/browse?${params.toString()}`);
 	};
 
 	return (
-		<div className="mt-12 hidden w-full max-w-5xl overflow-hidden rounded-xl bg-white shadow-2xl md:grid md:grid-cols-5">
+		<div className="mt-12 hidden w-full max-w-5xl overflow-hidden rounded-xl bg-white shadow-2xl md:grid md:grid-cols-4">
 			{/* LOCATION */}
 
 			<div className="border-r border-gray-200 p-4">
@@ -41,25 +41,17 @@ function HeroSearch() {
 					onChange={(event) => setLocation(event.target.value)}
 					className="w-full bg-transparent text-sm outline-none">
 					<option value="">Any location</option>
-					<option value="Italy">Italy</option>
-					<option value="Spain">Spain</option>
-					<option value="Greece">Greece</option>
-					<option value="Croatia">Croatia</option>
+					{locationOptions.map((country) => (
+						<option key={country} value={country}>
+							{country}
+						</option>
+					))}
 				</select>
 			</div>
 
-			{/* DATE */}
-
-			<div className="border-r border-gray-200 p-4">
-				<label className="mb-1 block text-[10px] font-semibold text-gray-800">
-					Date
-				</label>
-
-				<input
-					type="date"
-					className="w-full bg-transparent text-sm outline-none"
-				/>
-			</div>
+			{/* Date column removed — matches FilterPanel/FilterModal, was
+			    never wired to any real filtering. Grid dropped from
+			    5 columns to 4. */}
 
 			{/* GUESTS */}
 
@@ -100,11 +92,12 @@ function HeroSearch() {
 
 			{/* SEARCH */}
 
-			<Link
-				to="/browse"
+			<button
+				type="button"
+				onClick={handleSearch}
 				className="flex items-center justify-center bg-slate-700 px-6 text-sm font-medium text-white transition hover:bg-slate-800">
 				Search
-			</Link>
+			</button>
 		</div>
 	);
 }
