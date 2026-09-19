@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import FilterModal from "./FiltersModal";
-import { locationOptions } from "../../utils/Location";
+import { selectLocationOptions } from "../../redux/slices/propertiesSlice";
 
 function FilterPanel({
 	location = "",
@@ -16,6 +17,8 @@ function FilterPanel({
 	const [isMoreFiltersOpen, setIsMoreFiltersOpen] = useState(false);
 	const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
+	const locationOptions = useSelector(selectLocationOptions);
+
 	return (
 		<>
 			{/* === DESKTOP FILTER PANEL === */}
@@ -23,9 +26,8 @@ function FilterPanel({
 			<div className="hidden rounded-md bg-white p-5 shadow-md lg:block">
 				{/* MAIN FILTERS */}
 				{/* Date field removed — it was decorative, with no state or
-				    filtering logic behind it anywhere in the app. Grid
-				    dropped from 5 columns to 4 to match. */}
-
+					filtering logic behind it anywhere in the app. Grid
+					dropped from 5 columns to 4 to match. */}
 				<div className="grid grid-cols-4 gap-5">
 					{/* LOCATION */}
 
@@ -131,13 +133,9 @@ function FilterPanel({
 					</button>
 				</div>
 
-				{/* === EXPANDED FILTERS === */}
-
 				{isMoreFiltersOpen && (
 					<div className="mt-5 border-t border-gray-200 pt-5">
 						<div className="grid grid-cols-4 gap-8">
-							{/* PROPERTY TYPE */}
-
 							<div>
 								<p className="mb-4 text-[10px] font-medium uppercase text-gray-500">
 									Property type
@@ -160,8 +158,6 @@ function FilterPanel({
 									</label>
 								</div>
 							</div>
-
-							{/* AMENITIES */}
 
 							<div>
 								<p className="mb-4 text-[10px] font-medium uppercase text-gray-500">
@@ -186,8 +182,6 @@ function FilterPanel({
 								</div>
 							</div>
 
-							{/* FEATURES */}
-
 							<div>
 								<p className="mb-4 text-[10px] font-medium uppercase text-gray-500">
 									Features
@@ -210,8 +204,6 @@ function FilterPanel({
 									</label>
 								</div>
 							</div>
-
-							{/* BEDROOMS */}
 
 							<div>
 								<p className="mb-4 text-[10px] font-medium uppercase text-gray-500">
@@ -281,8 +273,6 @@ function FilterPanel({
 						</button>
 					</div>
 
-					{/* QUICK FILTERS */}
-
 					<div className="mt-4 grid grid-cols-2 gap-3">
 						<select
 							value={location}
@@ -316,8 +306,6 @@ function FilterPanel({
 					</button>
 				</div>
 			</div>
-
-			{/* === MOBILE FILTER MODAL === */}
 
 			<FilterModal
 				isOpen={isMobileFilterOpen}

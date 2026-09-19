@@ -60,7 +60,7 @@ const createPropertyDetails = ({
 	description,
 });
 
-const properties = [
+const Properties = [
 	{
 		id: 1,
 		title: "Villa Makarska",
@@ -362,4 +362,4 @@ const properties = [
 	},
 ];
 
-export default properties;
+export default Properties;

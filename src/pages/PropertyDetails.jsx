@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import properties from "../Data/properties";
+import { selectAllProperties } from "../redux/slices/propertiesSlice";
 
 import PropertyGallery from "../components/property/PropertyGallery";
 import PropertyAmenities from "../components/property/Amenities";
@@ -19,6 +19,7 @@ import {
 function PropertyDetails() {
 	const { id } = useParams();
 
+	const properties = useSelector(selectAllProperties);
 	const property = properties.find((item) => item.id === Number(id));
 
 	// Same pattern as PropertyCard: no more useState/useEffect to load
@@ -32,7 +33,6 @@ function PropertyDetails() {
 	const favourite = property ? favouriteIds.includes(property.id) : false;
 
 	// PROPERTY NOT FOUND
-
 	if (!property) {
 		return (
 			<main className="flex min-h-[60vh] items-center justify-center bg-white px-5">
@@ -60,7 +60,6 @@ function PropertyDetails() {
 			<section className="px-5 py-10 sm:px-8 lg:px-16 lg:py-14">
 				<div className="mx-auto max-w-7xl">
 					{/* TITLE + FAVOURITE */}
-
 					<div className="flex items-start justify-between gap-6">
 						<div>
 							<p className="text-sm text-gray-500">
@@ -88,7 +87,6 @@ function PropertyDetails() {
 					</div>
 
 					{/* PRICE */}
-
 					<div className="mt-6">
 						<span className="text-2xl font-semibold text-gray-900">
 							₦{property.price}
@@ -96,7 +94,6 @@ function PropertyDetails() {
 
 						<span className="ml-2 text-sm text-gray-500">/ night</span>
 					</div>
-
 					{/* === PROPERTY FEATURES === */}
 
 					<div className="mt-8 grid grid-cols-2 gap-4 border-y border-gray-200 py-6 sm:grid-cols-4">
@@ -134,13 +131,11 @@ function PropertyDetails() {
 					</div>
 				</div>
 			</section>
-
 			{/* === DESCRIPTION + BOOKING === */}
 
 			<section className="px-5 pb-10 sm:px-8 lg:px-16 lg:pb-14">
 				<div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_360px]">
 					{/* LEFT CONTENT */}
-
 					<div>
 						{/* DESCRIPTION */}
 
@@ -154,23 +149,18 @@ function PropertyDetails() {
 									"No description is available for this property yet."}
 							</p>
 						</div>
-
 						{/* AMENITIES */}
 
 						<div className="mt-10">
-							{/* <PropertyAmenities /> */}
 							<PropertyAmenities property={property} />
 						</div>
-
 						{/* LOCATION */}
 
 						<PropertyLocation property={property} />
-
 						{/* HOUSE RULES */}
 
 						<HouseRules property={property} />
 					</div>
-
 					{/* RIGHT BOOKING CARD */}
 
 					<div>
@@ -180,13 +170,11 @@ function PropertyDetails() {
 					</div>
 				</div>
 			</section>
-
 			{/* === RELATED PROPERTIES === */}
 
 			<RelatedProperties property={property} />
 
 			{/* === CONTACT === */}
-
 			<ContactSection />
 		</main>
 	);

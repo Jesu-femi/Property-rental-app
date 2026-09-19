@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { locationOptions } from "../../utils/Location"; // confirm this path matches your folder depth
+import { useSelector } from "react-redux";
+import { selectLocationOptions } from "../../redux/slices/propertiesSlice";
 
 function HeroSearch() {
 	const navigate = useNavigate();
+	const locationOptions = useSelector(selectLocationOptions);
 
 	const [location, setLocation] = useState("");
 	const [guests, setGuests] = useState("");
@@ -29,8 +31,6 @@ function HeroSearch() {
 
 	return (
 		<div className="mt-12 hidden w-full max-w-5xl overflow-hidden rounded-xl bg-white shadow-2xl md:grid md:grid-cols-4">
-			{/* LOCATION */}
-
 			<div className="border-r border-gray-200 p-4">
 				<label className="mb-1 block text-[10px] font-semibold text-gray-800">
 					Location
@@ -73,7 +73,6 @@ function HeroSearch() {
 			</div>
 
 			{/* PRICE */}
-
 			<div className="border-r border-gray-200 p-4">
 				<label className="mb-1 block text-[10px] font-semibold text-gray-800">
 					Price
@@ -91,7 +90,6 @@ function HeroSearch() {
 			</div>
 
 			{/* SEARCH */}
-
 			<button
 				type="button"
 				onClick={handleSearch}

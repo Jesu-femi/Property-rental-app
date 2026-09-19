@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import aboutBg from "../assets/images/About bg.jpg";
-import properties from "../Data/properties";
+import { selectAllProperties } from "../redux/slices/propertiesSlice";
 import PropertyGrid from "../components/property/PropertyGrid";
 
 import {
@@ -18,6 +18,7 @@ function Favourites() {
 	// Browse, this page reflects it without any extra wiring.
 	const dispatch = useDispatch();
 	const favouriteIds = useSelector(selectFavouriteIds);
+	const properties = useSelector(selectAllProperties);
 
 	const favouriteProperties = properties.filter((property) =>
 		favouriteIds.includes(property.id),
@@ -30,7 +31,6 @@ function Favourites() {
 	return (
 		<main className="relative min-h-screen overflow-hidden">
 			{/* === FULL PAGE BACKGROUND === */}
-
 			<div className="fixed inset-0 -z-10">
 				<img
 					src={aboutBg}
@@ -64,7 +64,6 @@ function Favourites() {
 					</p>
 				</div>
 			</section>
-
 			{/* === SAVED VILLAS === */}
 
 			<section className="px-5 pb-20 sm:px-8 md:px-10 lg:px-16 lg:pb-28">
@@ -84,6 +83,7 @@ function Favourites() {
 							</p>
 						</div>
 
+						{/* PROPERTY GRID / EMPTY STATE */}
 						{favouriteProperties.length > 0 && (
 							<button
 								type="button"
@@ -93,8 +93,6 @@ function Favourites() {
 							</button>
 						)}
 					</div>
-
-					{/* PROPERTY GRID / EMPTY STATE */}
 
 					{favouriteProperties.length > 0 ? (
 						<PropertyGrid properties={favouriteProperties} />
@@ -120,7 +118,6 @@ function Favourites() {
 			</section>
 
 			{/* === BOTTOM AREA === */}
-
 			<section className="bg-[#dfe4e8]/95 px-5 py-16 sm:px-8 lg:px-16">
 				<div className="mx-auto max-w-7xl">
 					<div className="grid gap-10 md:grid-cols-2">

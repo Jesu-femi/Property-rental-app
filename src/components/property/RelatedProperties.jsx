@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
+
 import PropertyCard from "./PropertyCard";
-import properties from "../../Data/properties";
+import { selectAllProperties } from "../../redux/slices/propertiesSlice";
 
 function RelatedProperties({ property }) {
+	const properties = useSelector(selectAllProperties);
+
 	const relatedProperties = properties
 		.filter((item) => item.id !== property.id)
 		.slice(0, 3);
